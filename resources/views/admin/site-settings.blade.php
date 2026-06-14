@@ -27,7 +27,7 @@
             margin: 0;
             color: var(--ink);
             font-family: 'Poppins', Arial, Helvetica, sans-serif;
-            font-size: 16px;
+            font-size: 11px;
             background: var(--paper);
         }
 
@@ -391,31 +391,39 @@
             <nav class="sidebar-nav">
                 <a class="sidebar-link" href="/admin">
                     <span class="sidebar-icon">01</span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="sidebar-link" href="/admin/slider">
+                    <span class="sidebar-icon">02</span>
                     <span>Hero Slider</span>
                 </a>
                 <a class="sidebar-link active" href="/admin/site-settings" aria-current="page">
-                    <span class="sidebar-icon">02</span>
-                    <span>Site Header</span>
+                    <span class="sidebar-icon">03</span>
+                    <span>Site Settings</span>
                 </a>
                 <a class="sidebar-link" href="/admin/event-bookings">
-                    <span class="sidebar-icon">03</span>
+                    <span class="sidebar-icon">04</span>
                     <span>Event Bookings</span>
                 </a>
                 <a class="sidebar-link" href="/admin/content/pages">
-                    <span class="sidebar-icon">04</span>
-                    <span>Content Manager</span>
+                    <span class="sidebar-icon">05</span>
+                    <span>Page Text</span>
                 </a>
             </nav>
 
-            <div class="sidebar-section">Coming Next</div>
+            <div class="sidebar-section">Content</div>
             <nav class="sidebar-nav">
-                <a class="sidebar-link" href="#causes-management">
-                    <span class="sidebar-icon">05</span>
-                    <span>Causes</span>
-                </a>
-                <a class="sidebar-link" href="#donation-management">
+                <a class="sidebar-link" href="/admin/projects">
                     <span class="sidebar-icon">06</span>
-                    <span>Donations</span>
+                    <span>Projects</span>
+                </a>
+                <a class="sidebar-link" href="/admin/content/events">
+                    <span class="sidebar-icon">07</span>
+                    <span>Events</span>
+                </a>
+                <a class="sidebar-link" href="/admin/content/news">
+                    <span class="sidebar-icon">08</span>
+                    <span>News</span>
                 </a>
             </nav>
 
@@ -510,6 +518,25 @@
                             <label for="registration_status">Registration Status</label>
                             <input id="registration_status" name="registration_status" value="{{ old('registration_status', $settings['registration_status']) }}" required>
                         </div>
+
+                        <div class="field">
+                            <label for="whatsapp_url">WhatsApp Chat Link</label>
+                            <input id="whatsapp_url" name="whatsapp_url" value="{{ old('whatsapp_url', $settings['whatsapp_url'] ?? '') }}">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="settings-card">
+                    <h2>Social Media Links</h2>
+                    <div class="fields-grid">
+                        @foreach (($settings['social_links'] ?? []) as $index => $socialLink)
+                            <input type="hidden" name="social_links[{{ $index }}][platform]" value="{{ $socialLink['platform'] }}">
+                            <input type="hidden" name="social_links[{{ $index }}][label]" value="{{ $socialLink['label'] }}">
+                            <div class="field">
+                                <label for="social_link_{{ $index }}">{{ $socialLink['label'] }}</label>
+                                <input id="social_link_{{ $index }}" name="social_links[{{ $index }}][url]" value="{{ old("social_links.$index.url", $socialLink['url'] ?? '') }}">
+                            </div>
+                        @endforeach
                     </div>
                 </section>
 

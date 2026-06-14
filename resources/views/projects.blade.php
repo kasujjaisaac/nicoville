@@ -6,9 +6,12 @@
 
 @section('page_css')
     .project-card { overflow:hidden; }
+    .project-card .image-wrap { aspect-ratio:16 / 10; min-height:0; }
+    .project-card .image-wrap img { display:block; height:100%; min-height:0; object-fit:cover; }
     .project-card .panel-pad { display:grid; gap:14px; }
     .project-card p { margin:0; color:var(--muted); }
     .project-meta { display:flex; flex-wrap:wrap; gap:10px; }
+    .project-status { display:inline-flex; width:max-content; min-height:32px; align-items:center; padding:0 10px; border:1px solid var(--line); color:var(--green); font-size:12px; font-weight:900; text-transform:uppercase; }
 @endsection
 
 @section('content')
@@ -28,11 +31,13 @@
                         <h3>{{ $project['title'] }}</h3>
                         <p>{{ $project['summary'] }}</p>
                         <div class="project-meta">
-                            @foreach ($project['focus'] as $focus)
-                                <span class="tag">{{ $focus }}</span>
-                            @endforeach
+                            <span class="tag">{{ $project['category'] }}</span>
+                            @if ($project['started'])
+                                <span class="tag">Since {{ $project['started'] }}</span>
+                            @endif
+                            <span class="project-status">{{ $project['status'] }}</span>
                         </div>
-                        <a class="button outline" href="{{ $project['url'] }}">View Project</a>
+                        <a class="button outline" href="/projects/{{ $project['slug'] }}">View Project</a>
                     </div>
                 </article>
             @endforeach

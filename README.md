@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Nicoville Content Notes
+
+- The homepage Latest Events & Programs and Blogs & News sections are intentionally hidden for now in `resources/views/welcome.blade.php`. Their markup has been kept in place so the sections can be reused later with timer-based display logic.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

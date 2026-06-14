@@ -3,6 +3,7 @@
 namespace App\Support;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CausesRepository
 {
@@ -14,7 +15,7 @@ class CausesRepository
             $causes = json_decode(Storage::disk('local')->get(self::FILE), true);
 
             if (is_array($causes)) {
-                return $causes;
+                return $this->normalize($causes);
             }
         }
 
@@ -23,12 +24,37 @@ class CausesRepository
 
     public function save(array $causes): void
     {
-        Storage::disk('local')->put(self::FILE, json_encode(array_values($causes), JSON_PRETTY_PRINT));
+        Storage::disk('local')->put(self::FILE, json_encode($this->normalize($causes), JSON_PRETTY_PRINT));
+    }
+
+    public function find(string $slug): ?array
+    {
+        foreach ($this->all() as $cause) {
+            if ($cause['slug'] === $slug) {
+                return $cause;
+            }
+        }
+
+        return null;
+    }
+
+    public function formatMoney(int|float $amount): string
+    {
+        return 'Sh'.number_format(max(0, (int) $amount));
+    }
+
+    public function progress(array $cause): int
+    {
+        if (($cause['target'] ?? 0) <= 0) {
+            return 0;
+        }
+
+        return min(100, (int) round((($cause['raised'] ?? 0) / $cause['target']) * 100));
     }
 
     public function defaults(): array
     {
-        return [
+        return $this->normalize([
             [
                 'slug' => 'education-support',
                 'category' => 'Education',
@@ -65,67 +91,52 @@ class CausesRepository
                     'Reduce hunger-related barriers to school attendance.',
                 ],
             ],
-            [
-                'slug' => 'street-children-support',
-                'category' => 'Child Care',
-                'title' => 'Street Children Support and Care',
-                'image' => '/uploads/slides/slide-69f54850bb6117.98724716.jpeg',
-                'brief' => 'Restoring dignity and hope for street-connected children through meals, hygiene kits, counseling, and follow-up care.',
-                'target' => 10000000,
-                'raised' => 5700000,
-                'details' => [
-                    'This campaign reaches street-connected children with meals, hygiene kits, counseling referrals, and safe follow-up care. We believe every child deserves dignity, protection, and a chance to rebuild trust.',
-                    'The work begins with presence and consistency. Your support helps us meet immediate needs while opening pathways toward care, family tracing, mentorship, and reintegration where possible.',
-                ],
-                'impact' => [
-                    'Provide meals, clothing, and hygiene essentials.',
-                    'Support counseling referrals and follow-up care.',
-                    'Create safe relationships that lead to reintegration.',
-                ],
-            ],
-            [
-                'slug' => 'youth-mentorship',
-                'category' => 'Mentorship',
-                'title' => 'Youth Mentorship and Development',
-                'image' => '/uploads/slides/slide-69f5475f47f707.80354709.jpg',
-                'brief' => 'Guiding young people through mentorship, life skills, positive activities, and community support.',
-                'target' => 5500000,
-                'raised' => 2350000,
-                'details' => [
-                    'This campaign supports mentorship and positive youth development for children and young people in vulnerable communities. We create spaces for guidance, life skills, discipline, and healthy relationships.',
-                    'Mentorship helps young people see possibility beyond their current circumstances. Your contribution supports activities, materials, volunteer coordination, and follow-up support.',
-                ],
-                'impact' => [
-                    'Run mentorship and life-skills sessions.',
-                    'Support positive youth activities and guidance.',
-                    'Connect young people with caring role models.',
-                ],
-            ],
-        ];
+        ]);
     }
 
-    public function find(string $slug): ?array
+    private function normalize(array $causes): array
     {
-        foreach ($this->all() as $cause) {
-            if ($cause['slug'] === $slug) {
-                return $cause;
-            }
-        }
+        $usedSlugs = [];
 
-        return null;
+        return collect($causes)
+            ->map(function (array $cause) use (&$usedSlugs): array {
+                $title = trim((string) ($cause['title'] ?? 'Cause'));
+                $slug = Str::slug($cause['slug'] ?? $title) ?: Str::random(8);
+                $baseSlug = $slug;
+                $suffix = 2;
+
+                while (in_array($slug, $usedSlugs, true)) {
+                    $slug = "{$baseSlug}-{$suffix}";
+                    $suffix++;
+                }
+
+                $usedSlugs[] = $slug;
+
+                return [
+                    'slug' => $slug,
+                    'category' => trim((string) ($cause['category'] ?? 'Cause')),
+                    'title' => $title,
+                    'image' => trim((string) ($cause['image'] ?? '')),
+                    'brief' => trim((string) ($cause['brief'] ?? '')),
+                    'target' => max(0, (int) ($cause['target'] ?? 0)),
+                    'raised' => max(0, (int) ($cause['raised'] ?? 0)),
+                    'details' => $this->normalizeLines($cause['details'] ?? []),
+                    'impact' => $this->normalizeLines($cause['impact'] ?? []),
+                ];
+            })
+            ->filter(fn (array $cause): bool => $cause['title'] !== '')
+            ->values()
+            ->all();
     }
 
-    public function formatMoney(int $amount): string
+    private function normalizeLines(array|string $value): array
     {
-        return 'Sh' . number_format($amount);
-    }
+        $lines = is_array($value) ? $value : preg_split("/\r\n|\n|\r/", $value);
 
-    public function progress(array $cause): int
-    {
-        if ($cause['target'] <= 0) {
-            return 0;
-        }
-
-        return min(100, (int) round(($cause['raised'] / $cause['target']) * 100));
+        return collect($lines ?: [])
+            ->map(fn ($line): string => trim((string) $line))
+            ->filter()
+            ->values()
+            ->all();
     }
 }

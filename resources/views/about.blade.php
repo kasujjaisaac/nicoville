@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About Us - {{ $settings['logo_name'] }} {{ $settings['logo_tagline'] }}</title>
+    <title>Who We Are - {{ $settings['logo_name'] }} {{ $settings['logo_tagline'] }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,6 +12,8 @@
             --green: #087348;
             --green-dark: #063f2e;
             --green-soft: #f4fbf7;
+            --gold: #d99b2b;
+            --coral: #c9543d;
             --line: #d9ebe2;
             --muted: #2f6e58;
             --white: #ffffff;
@@ -119,6 +121,23 @@
             font-weight: 800;
         }
 
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item.has-submenu > a {
+            gap: 6px;
+        }
+
+        .nav-item.has-submenu > a::after {
+            width: 7px;
+            height: 7px;
+            content: "";
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+        }
+
         .nav a {
             display: inline-flex;
             align-items: center;
@@ -136,6 +155,43 @@
             padding: 0 18px;
             background: var(--green);
             color: var(--white);
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 30;
+            display: grid;
+            min-width: 220px;
+            padding: 10px 8px 8px;
+            border: 1px solid var(--line);
+            background: var(--white);
+            box-shadow: 0 18px 42px rgba(6, 63, 46, .13);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(6px);
+            transition: opacity .18s ease, transform .18s ease;
+        }
+
+        .nav-item:hover .submenu,
+        .nav-item:focus-within .submenu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .submenu a {
+            min-height: 40px;
+            padding: 0 12px;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .submenu a:hover,
+        .submenu a.is-active {
+            color: var(--white);
+            background: var(--green);
         }
 
         .about-hero {
@@ -268,6 +324,145 @@
             line-height: 1.25;
         }
 
+        .values-section {
+            padding: clamp(58px, 7vw, 96px) clamp(18px, 5vw, 76px);
+            background:
+                linear-gradient(180deg, var(--green-soft), var(--white) 62%),
+                var(--white);
+        }
+
+        .values-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .values-heading {
+            display: grid;
+            grid-template-columns: minmax(0, .82fr) minmax(280px, .48fr);
+            gap: clamp(24px, 5vw, 62px);
+            align-items: end;
+            margin-bottom: clamp(28px, 5vw, 48px);
+        }
+
+        .values-kicker {
+            display: inline-flex;
+            width: max-content;
+            min-height: 34px;
+            align-items: center;
+            padding: 0 13px;
+            margin-bottom: 14px;
+            color: var(--green);
+            background: rgba(8, 115, 72, .1);
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .values-heading h2 {
+            margin: 0;
+            color: var(--green-dark);
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.05;
+            font-weight: 800;
+        }
+
+        .values-heading p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            border-top: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+            background: var(--white);
+            box-shadow: 0 22px 58px rgba(6, 63, 46, .08);
+        }
+
+        .value-card {
+            min-height: 250px;
+            padding: 24px;
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            background: var(--white);
+        }
+
+        .value-number {
+            display: inline-flex;
+            width: 42px;
+            height: 42px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--white);
+            background: var(--green);
+            font-size: 13px;
+            font-weight: 900;
+            border-radius: 50%;
+        }
+
+        .value-card:nth-child(3n + 2) .value-number {
+            background: var(--gold);
+        }
+
+        .value-card:nth-child(3n) .value-number {
+            background: var(--coral);
+        }
+
+        .value-card h3 {
+            margin: 0 0 12px;
+            color: var(--green-dark);
+            font-size: 24px;
+            line-height: 1.2;
+        }
+
+        .value-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.65;
+        }
+
+        .commitment-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 24px;
+            align-items: center;
+            margin-top: 24px;
+            padding: clamp(26px, 4vw, 42px);
+            color: var(--white);
+            background: var(--green-dark);
+        }
+
+        .commitment-card h3 {
+            margin: 0 0 12px;
+            color: var(--white);
+            font-size: clamp(28px, 4vw, 42px);
+        }
+
+        .commitment-card p {
+            margin: 0;
+            max-width: 820px;
+            color: rgba(255, 255, 255, .84);
+            line-height: 1.7;
+        }
+
+        .commitment-motto {
+            display: inline-flex;
+            min-height: 52px;
+            align-items: center;
+            padding: 0 18px;
+            color: var(--green-dark);
+            background: var(--white);
+            font-size: 16px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
         .site-footer {
             color: rgba(255, 255, 255, .84);
             background: var(--green-dark);
@@ -343,7 +538,16 @@
             }
 
             .cards-grid,
+            .values-heading,
             .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .commitment-card {
                 grid-template-columns: 1fr;
             }
 
@@ -361,6 +565,10 @@
 
             .about-card h2 {
                 font-size: 38px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
             }
 
             .footer-bottom {
@@ -406,8 +614,17 @@
                 @php
                     $url = str_starts_with($menu['url'], '#') ? '/' . $menu['url'] : $menu['url'];
                 @endphp
-                <div class="{{ $menu['highlight'] ? 'donate-link' : '' }}">
-                    <a class="{{ $url === '/about' ? 'is-active' : '' }}" href="{{ $url }}">{{ $menu['label'] }}</a>
+                @php $hasChildren = ! empty($menu['children']); @endphp
+                <div class="nav-item {{ $hasChildren ? 'has-submenu' : '' }} {{ $menu['highlight'] ? 'donate-link' : '' }}">
+                    <a class="{{ $url === '/about' ? 'is-active' : '' }}" href="{{ $url }}" @if ($hasChildren) aria-haspopup="true" aria-expanded="false" @endif>{{ $menu['label'] }}</a>
+                    @if (! empty($menu['children']))
+                        <div class="submenu">
+                            @foreach ($menu['children'] as $child)
+                                @php $childUrl = str_starts_with($child['url'], '#') ? '/' . $child['url'] : $child['url']; @endphp
+                                <a class="{{ $childUrl === '/about' ? 'is-active' : '' }}" href="{{ $childUrl }}">{{ $child['label'] }}</a>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             @endforeach
         </nav>
@@ -419,9 +636,9 @@
                 <nav class="breadcrumb" aria-label="Sitemap">
                     <a href="/">Home</a>
                     <span>/</span>
-                    <span>About Us</span>
+            <span>Who We Are</span>
                 </nav>
-                <h1>About Us</h1>
+                <h1>Who We Are</h1>
             </div>
         </section>
 
@@ -447,6 +664,36 @@
                 </article>
             </div>
         </section>
+
+        <section class="values-section" aria-label="Nicoville Foundation core values">
+            <div class="values-inner">
+                <div class="values-heading">
+                    <div>
+                        <span class="values-kicker">Core Values</span>
+                        <h2>{{ $pageContent['about']['core_values_title'] }}</h2>
+                    </div>
+                    <p>{{ $pageContent['about']['core_values_intro'] }}</p>
+                </div>
+
+                <div class="values-grid">
+                    @foreach ($pageContent['about']['core_values'] as $index => $value)
+                        <article class="value-card">
+                            <span class="value-number">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}</span>
+                            <h3>{{ $value['title'] }}</h3>
+                            <p>{{ $value['text'] }}</p>
+                        </article>
+                    @endforeach
+                </div>
+
+                <article class="commitment-card">
+                    <div>
+                        <h3>{{ $pageContent['about']['commitment_title'] }}</h3>
+                        <p>{{ $pageContent['about']['commitment'] }}</p>
+                    </div>
+                    <span class="commitment-motto">{{ $pageContent['about']['motto_title'] }}: {{ $pageContent['about']['motto'] }}</span>
+                </article>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -468,6 +715,9 @@
                             $url = str_starts_with($menu['url'], '#') ? '/' . $menu['url'] : $menu['url'];
                         @endphp
                         <li><a href="{{ $url }}">{{ $menu['label'] }}</a></li>
+                        @foreach ($menu['children'] ?? [] as $child)
+                            <li><a href="{{ $child['url'] }}">{{ $child['label'] }}</a></li>
+                        @endforeach
                     @endforeach
                 </ul>
             </div>

@@ -10,7 +10,7 @@
     <style>
         :root { --ink:#15211d; --muted:#6f7d78; --line:#dbe6e0; --green:#0f6f4d; --green-dark:#073f31; --coral:#c9543d; --paper:#f8f5ee; --white:#fff; }
         * { box-sizing:border-box; }
-        body { margin:0; color:var(--ink); font-family:'Poppins',Arial,sans-serif; font-size:16px; background:var(--paper); }
+        body { margin:0; color:var(--ink); font-family:'Poppins',Arial,sans-serif; font-size:11px; background:var(--paper); }
         a { color:inherit; text-decoration:none; }
         .admin-layout { display:grid; grid-template-columns:280px minmax(0,1fr); min-height:100vh; }
         .sidebar { position:sticky; top:0; display:flex; flex-direction:column; height:100vh; padding:24px 18px; color:rgba(255,255,255,.78); background:var(--green-dark); }
@@ -54,10 +54,17 @@
             </a>
             <div class="sidebar-section">Website</div>
             <nav class="sidebar-nav">
-                <a class="sidebar-link" href="/admin"><span class="sidebar-icon">01</span><span>Hero Slider</span></a>
-                <a class="sidebar-link" href="/admin/site-settings"><span class="sidebar-icon">02</span><span>Site Header</span></a>
-                <a class="sidebar-link active" href="/admin/event-bookings" aria-current="page"><span class="sidebar-icon">03</span><span>Event Bookings</span></a>
-                <a class="sidebar-link" href="/admin/content/pages"><span class="sidebar-icon">04</span><span>Content Manager</span></a>
+                <a class="sidebar-link" href="/admin"><span class="sidebar-icon">01</span><span>Dashboard</span></a>
+                <a class="sidebar-link" href="/admin/slider"><span class="sidebar-icon">02</span><span>Hero Slider</span></a>
+                <a class="sidebar-link" href="/admin/site-settings"><span class="sidebar-icon">03</span><span>Site Settings</span></a>
+                <a class="sidebar-link active" href="/admin/event-bookings" aria-current="page"><span class="sidebar-icon">04</span><span>Event Bookings</span></a>
+            </nav>
+            <div class="sidebar-section">Content</div>
+            <nav class="sidebar-nav">
+                <a class="sidebar-link" href="/admin/content/pages"><span class="sidebar-icon">05</span><span>Page Text</span></a>
+                <a class="sidebar-link" href="/admin/projects"><span class="sidebar-icon">06</span><span>Projects</span></a>
+                <a class="sidebar-link" href="/admin/content/events"><span class="sidebar-icon">07</span><span>Events</span></a>
+                <a class="sidebar-link" href="/admin/content/news"><span class="sidebar-icon">08</span><span>News</span></a>
             </nav>
             <div class="sidebar-footer">
                 <p class="admin-user">Signed in as<br><strong>{{ auth()->user()->email }}</strong></p>

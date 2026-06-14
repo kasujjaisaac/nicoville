@@ -35,6 +35,11 @@ class AdminSiteSettingsController extends Controller
             'volunteer_url' => ['required', 'string', 'max:160'],
             'registration_number' => ['required', 'string', 'max:80'],
             'registration_status' => ['required', 'string', 'max:40'],
+            'whatsapp_url' => ['nullable', 'string', 'max:255'],
+            'social_links' => ['nullable', 'array'],
+            'social_links.*.platform' => ['required_with:social_links', 'string', 'max:40'],
+            'social_links.*.label' => ['required_with:social_links', 'string', 'max:40'],
+            'social_links.*.url' => ['nullable', 'string', 'max:255'],
             'menus' => ['required', 'array', 'min:1'],
             'menus.*.label' => ['required', 'string', 'max:40'],
             'menus.*.url' => ['required', 'string', 'max:160'],
@@ -57,6 +62,15 @@ class AdminSiteSettingsController extends Controller
 
         $validated['logo_image'] = $logoImage;
         unset($validated['logo_image_url'], $validated['logo_image_file']);
+
+        $validated['social_links'] = collect($validated['social_links'] ?? [])
+            ->map(fn (array $link): array => [
+                'platform' => $link['platform'],
+                'label' => $link['label'],
+                'url' => $link['url'] ?? '',
+            ])
+            ->values()
+            ->all();
 
         $validated['menus'] = collect($validated['menus'])
             ->map(function (array $menu, int $index) use ($request): array {

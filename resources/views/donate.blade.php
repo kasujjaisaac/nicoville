@@ -23,13 +23,23 @@
             <p>{{ $pageContent['donate']['intro'] }}</p>
         </div>
         <div class="donate-layout">
-            <form class="form-card" action="/contributions" method="GET">
-                <label>Cause
+            <form class="form-card" action="/donations" method="POST">
+                @csrf
+                <label>Project or Cause
                     <select name="cause" required>
-                        <option value="">Choose a cause</option>
-                        @foreach ($causes as $cause)
-                            <option value="{{ $cause['title'] }}" {{ request('cause') === $cause['title'] ? 'selected' : '' }}>{{ $cause['title'] }}</option>
-                        @endforeach
+                        <option value="">Choose a project or cause</option>
+                        @if (! empty($causes))
+                            <optgroup label="Causes">
+                                @foreach ($causes as $cause)
+                                    <option value="{{ $cause['title'] }}" {{ request('cause') === $cause['title'] ? 'selected' : '' }}>{{ $cause['title'] }}</option>
+                                @endforeach
+                            </optgroup>
+                        @endif
+                        <optgroup label="Projects">
+                            @foreach ($projects as $project)
+                                <option value="{{ $project['title'] }}" {{ request('project') === $project['title'] || request('cause') === $project['title'] ? 'selected' : '' }}>{{ $project['title'] }}</option>
+                            @endforeach
+                        </optgroup>
                     </select>
                 </label>
                 <div class="form-row">
@@ -40,8 +50,23 @@
                     <label>Contact / Phone<input name="phone" type="tel" placeholder="+256..." required></label>
                     <label>Amount<input name="amount" type="number" min="1" placeholder="Amount in UGX" required></label>
                 </div>
+                <div class="form-row">
+                    <label>Currency
+                        <select name="currency" required>
+                            <option value="UGX">UGX</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </label>
+                    <label>Payment Method
+                        <select name="payment_method" required>
+                            <option value="mobile-money">Mobile Money</option>
+                            <option value="bank-transfer">Bank Transfer</option>
+                            <option value="cash-pledge">Cash Pledge</option>
+                        </select>
+                    </label>
+                </div>
                 <label>Message / Note<textarea name="message" placeholder="Optional note for this contribution"></textarea></label>
-                <button class="button" type="submit">Continue to Contributions</button>
+                <button class="button" type="submit">Submit Contribution</button>
             </form>
             <aside class="donate-copy">
                 <div class="giving-card">
@@ -50,9 +75,9 @@
                     <p>{{ $pageContent['donate']['side_text'] }}</p>
                 </div>
                 <ul class="impact-list">
-                    <li>Education support keeps children in school.</li>
-                    <li>Food support helps families through difficult seasons.</li>
-                    <li>Care outreach restores dignity for street-connected children.</li>
+                    <li>Project support keeps community programs active.</li>
+                    <li>Reusable support helps families through difficult seasons.</li>
+                    <li>Outreach restores dignity and practical hope.</li>
                 </ul>
             </aside>
         </div>

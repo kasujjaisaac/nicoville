@@ -27,7 +27,7 @@
             margin: 0;
             color: var(--ink);
             font-family: 'Poppins', Arial, Helvetica, sans-serif;
-            font-size: 16px;
+            font-size: 11px;
             background: var(--paper);
         }
 
@@ -344,33 +344,41 @@
 
             <div class="sidebar-section">Website</div>
             <nav class="sidebar-nav">
-                <a class="sidebar-link active" href="/admin" aria-current="page">
+                <a class="sidebar-link" href="/admin">
                     <span class="sidebar-icon">01</span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="sidebar-link active" href="/admin/slider" aria-current="page">
+                    <span class="sidebar-icon">02</span>
                     <span>Hero Slider</span>
                 </a>
                 <a class="sidebar-link" href="/admin/site-settings">
-                    <span class="sidebar-icon">02</span>
-                    <span>Site Header</span>
+                    <span class="sidebar-icon">03</span>
+                    <span>Site Settings</span>
                 </a>
                 <a class="sidebar-link" href="/admin/event-bookings">
-                    <span class="sidebar-icon">03</span>
+                    <span class="sidebar-icon">04</span>
                     <span>Event Bookings</span>
                 </a>
                 <a class="sidebar-link" href="/admin/content/pages">
-                    <span class="sidebar-icon">04</span>
-                    <span>Content Manager</span>
+                    <span class="sidebar-icon">05</span>
+                    <span>Page Text</span>
                 </a>
             </nav>
 
-            <div class="sidebar-section">Coming Next</div>
+            <div class="sidebar-section">Content</div>
             <nav class="sidebar-nav">
-                <a class="sidebar-link" href="#causes-management">
-                    <span class="sidebar-icon">05</span>
-                    <span>Causes</span>
-                </a>
-                <a class="sidebar-link" href="#donation-management">
+                <a class="sidebar-link" href="/admin/projects">
                     <span class="sidebar-icon">06</span>
-                    <span>Donations</span>
+                    <span>Projects</span>
+                </a>
+                <a class="sidebar-link" href="/admin/content/events">
+                    <span class="sidebar-icon">07</span>
+                    <span>Events</span>
+                </a>
+                <a class="sidebar-link" href="/admin/content/news">
+                    <span class="sidebar-icon">08</span>
+                    <span>News</span>
                 </a>
             </nav>
 
@@ -400,7 +408,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="/admin" enctype="multipart/form-data">
+                <form method="POST" action="/admin/slider" enctype="multipart/form-data">
                     @csrf
 
                     @foreach ($slides as $index => $slide)

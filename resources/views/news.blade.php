@@ -28,7 +28,7 @@
                         <span class="news-date">{{ $post['date'] }}</span>
                         <h3>{{ $post['title'] }}</h3>
                         <p>{{ $post['summary'] }}</p>
-                        <a class="button outline" href="{{ $post['link_url'] ?? '/contact' }}">{{ $post['link_label'] ?? 'Read More' }}</a>
+                        <a class="button outline" href="/news/{{ $post['slug'] }}">{{ $post['link_label'] ?? 'Read More' }}</a>
                     </div>
                 </article>
             @endforeach

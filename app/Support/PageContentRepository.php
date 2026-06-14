@@ -14,16 +14,16 @@ class PageContentRepository
             $content = json_decode(Storage::disk('local')->get(self::FILE), true);
 
             if (is_array($content)) {
-                return array_replace_recursive($this->defaults(), $content);
+                return $this->normalize($this->mergeWithDefaults($content));
             }
         }
 
-        return $this->defaults();
+        return $this->normalize($this->defaults());
     }
 
     public function save(array $content): void
     {
-        Storage::disk('local')->put(self::FILE, json_encode(array_replace_recursive($this->defaults(), $content), JSON_PRETTY_PRINT));
+        Storage::disk('local')->put(self::FILE, json_encode($this->normalize($this->mergeWithDefaults($content)), JSON_PRETTY_PRINT));
     }
 
     public function defaults(): array
@@ -31,8 +31,8 @@ class PageContentRepository
         return [
             'home' => [
                 'impact_statement' => 'Our community programs help vulnerable children access education, nutritious meals, safety and care through practical support.',
-                'causes_heading' => 'Contribute to Our Causes',
-                'causes_intro' => 'Your support helps us keep children in school, provide nutritious meals, and reach vulnerable children with practical care.',
+                'causes_heading' => 'Our Projects',
+                'causes_intro' => 'Explore the community-led projects restoring dignity, education, health, and hope across the people we serve.',
                 'stats_title' => 'Our Impact',
                 'stats' => [
                     ['number' => 500, 'suffix' => '+', 'label' => 'Children Reached'],
@@ -47,6 +47,32 @@ class PageContentRepository
                     ['title' => 'Focused Impact', 'text' => 'We concentrate support on education, nutrition, and street children care so every gift has a clear purpose.'],
                     ['title' => 'Programs With Care', 'text' => 'Our team works with local partners to deliver practical help with dignity, accountability, and compassion.'],
                 ],
+                'testimonials_kicker' => 'Testimonials',
+                'testimonials_title' => 'Voices of hope from the Nicoville family',
+                'testimonials_intro' => 'Every gift becomes a real story of care, dignity, and practical support in the lives of children and families.',
+                'testimonials' => [
+                    [
+                        'quote' => 'Nicoville came alongside our family with school materials and steady encouragement. My children felt seen, and that gave us strength to keep going.',
+                        'name' => 'Sarah N.',
+                        'role' => 'Parent supported through education care',
+                        'highlight' => 'Children stayed in school',
+                        'image' => '',
+                    ],
+                    [
+                        'quote' => 'What moved me most was the honesty of the team. They showed where support was needed and followed through with compassion.',
+                        'name' => 'Daniel K.',
+                        'role' => 'Monthly donor',
+                        'highlight' => 'Transparent giving',
+                        'image' => '',
+                    ],
+                    [
+                        'quote' => 'Serving with Nicoville taught me that small acts done consistently can restore confidence, hope, and belonging in a child.',
+                        'name' => 'Faith A.',
+                        'role' => 'Community volunteer',
+                        'highlight' => 'Hope restored',
+                        'image' => '',
+                    ],
+                ],
                 'events_kicker' => 'Events & Programs',
                 'events_title' => 'Latest Events & Programs',
                 'events_intro' => 'Join the work through outreach days, community support, and volunteer-led programs.',
@@ -59,7 +85,7 @@ class PageContentRepository
                 'footer_text' => 'Nicoville supports vulnerable families through transparent relief, education, health care, and community-led development programmes.',
                 'footer_support_links' => [
                     ['label' => 'Make a Donation', 'url' => '/donate'],
-                    ['label' => 'Sponsor Support', 'url' => '/causes'],
+                    ['label' => 'Support a Project', 'url' => '/projects'],
                     ['label' => 'Become a Volunteer', 'url' => '/contact'],
                     ['label' => 'Partner With Us', 'url' => '/contact'],
                 ],
@@ -85,10 +111,26 @@ class PageContentRepository
                 ],
                 'motto_title' => 'Motto',
                 'motto' => 'Spread Love, Heal The World',
+                'core_values_title' => 'Core Values of Nicoville Foundation',
+                'core_values_intro' => 'These values guide how we serve, lead, partner, and care for every life reached through Nicoville Foundation.',
+                'core_values' => [
+                    ['title' => 'Love', 'text' => 'Love is the foundation of everything we do. We believe that genuine love has the power to transform lives, restore hope, and unite communities.'],
+                    ['title' => 'Compassion', 'text' => 'We serve with empathy, kindness, and a deep commitment to understanding and responding to the needs of vulnerable individuals and communities.'],
+                    ['title' => 'Faith', 'text' => 'We are guided by faith in God, trusting Him to lead our mission and inspire positive change in the lives of those we serve.'],
+                    ['title' => 'Hope', 'text' => 'We strive to bring hope where there is despair, believing that every person deserves an opportunity for a brighter future.'],
+                    ['title' => 'Integrity', 'text' => 'We uphold honesty, transparency, accountability, and ethical conduct in all our actions and decisions.'],
+                    ['title' => 'Service', 'text' => 'We embrace a servant-hearted approach, placing the needs of others at the center of our work and leadership.'],
+                    ['title' => 'Empowerment', 'text' => 'We equip individuals and communities with the knowledge, resources, and opportunities needed to achieve sustainable growth and self-reliance.'],
+                    ['title' => 'Unity', 'text' => 'We believe lasting change is achieved through collaboration, partnership, and working together as one family for a common purpose.'],
+                    ['title' => 'Excellence', 'text' => 'We pursue the highest standards in our programs, leadership, and service delivery to maximize our impact on communities.'],
+                    ['title' => 'Human Dignity', 'text' => 'We respect, value, and uphold the worth of every individual regardless of age, gender, background, or circumstances.'],
+                ],
+                'commitment_title' => 'Our Commitment',
+                'commitment' => 'At Nicoville Foundation, we are committed to living out these values every day as we fulfill our mission of transforming lives, strengthening communities, and spreading love to heal the world.',
             ],
             'donate' => [
                 'title' => 'Your Gift Opens Doors',
-                'intro' => 'Choose a cause, share your donor details, and continue to the contributions page we shall connect next.',
+                'intro' => 'Choose a project, share your donor details, and continue to the contributions page we shall connect next.',
                 'side_title' => 'Every contribution is directed toward practical care.',
                 'side_text' => 'We focus support on education, nutrition, street children care, and mentorship for vulnerable children and families.',
             ],
@@ -97,5 +139,48 @@ class PageContentRepository
                 'intro' => 'Reach out to volunteer, partner with us, ask about a campaign, or share a message with the Nicoville team.',
             ],
         ];
+    }
+
+    private function normalize(array $content): array
+    {
+        foreach (['footer_support_links', 'social_links'] as $linkGroup) {
+            if (! isset($content['home'][$linkGroup]) || ! is_array($content['home'][$linkGroup])) {
+                continue;
+            }
+
+            $content['home'][$linkGroup] = collect($content['home'][$linkGroup])
+                ->map(function (array $link): array {
+                    if (($link['url'] ?? '') === '/causes') {
+                        $link['url'] = '/projects';
+                    }
+
+                    if (($link['label'] ?? '') === 'Sponsor Support') {
+                        $link['label'] = 'Support a Project';
+                    }
+
+                    return $link;
+                })
+                ->values()
+                ->all();
+        }
+
+        return $content;
+    }
+
+    private function mergeWithDefaults(array $content): array
+    {
+        $merged = array_replace_recursive($this->defaults(), $content);
+
+        foreach (['stats', 'trust_items', 'testimonials', 'footer_support_links', 'social_links'] as $listKey) {
+            if (isset($content['home'][$listKey]) && is_array($content['home'][$listKey])) {
+                $merged['home'][$listKey] = array_values($content['home'][$listKey]);
+            }
+        }
+
+        if (isset($content['about']['core_values']) && is_array($content['about']['core_values'])) {
+            $merged['about']['core_values'] = array_values($content['about']['core_values']);
+        }
+
+        return $merged;
     }
 }

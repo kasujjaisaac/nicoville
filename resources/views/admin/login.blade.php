@@ -30,7 +30,7 @@
             place-items: center;
             color: var(--ink);
             font-family: 'Poppins', Arial, Helvetica, sans-serif;
-            font-size: 16px;
+            font-size: 11px;
             background:
                 linear-gradient(rgba(7, 63, 49, .82), rgba(7, 63, 49, .72)),
                 url('https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1800&q=80');

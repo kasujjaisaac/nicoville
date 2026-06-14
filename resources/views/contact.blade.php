@@ -32,7 +32,11 @@
                     <li><b>Office Hours</b><br>Mon - Fri: 8:00 AM - 5:00 PM</li>
                 </ul>
             </aside>
-            <form class="form-card" action="mailto:{{ $settings['email'] }}" method="POST" enctype="text/plain">
+            @if (session('status'))
+                <div class="form-card">{{ session('status') }}</div>
+            @endif
+            <form class="form-card" action="/contact-messages" method="POST">
+                @csrf
                 <div class="form-row">
                     <label>Name<input name="name" type="text" placeholder="Your full name" required></label>
                     <label>Email<input name="email" type="email" placeholder="you@example.com" required></label>

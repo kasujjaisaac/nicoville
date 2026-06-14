@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nicoville Charity Organisation</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,11 +51,13 @@
             align-items: center;
             justify-content: space-between;
             gap: 18px;
+            overflow-x: auto;
             padding: 10px clamp(18px, 5vw, 76px);
             color: rgba(255, 255, 255, .92);
             background: var(--green-dark);
             font-size: 13px;
             font-weight: 700;
+            white-space: nowrap;
         }
 
         .top-group,
@@ -60,16 +65,18 @@
         .status-pill {
             display: flex;
             align-items: center;
+            flex: 0 0 auto;
             gap: 14px;
         }
 
         .contact-list {
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         .top-link {
             display: inline-flex;
             align-items: center;
+            flex: 0 0 auto;
             gap: 7px;
             min-height: 24px;
         }
@@ -81,6 +88,34 @@
             stroke: currentColor;
             stroke-width: 2;
             fill: none;
+        }
+
+        .top-socials {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 8px;
+        }
+
+        .top-socials a {
+            display: grid;
+            width: 32px;
+            height: 32px;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, .72);
+            color: var(--white);
+            background: transparent;
+            transition: background .2s ease, color .2s ease;
+        }
+
+        .top-socials a:hover {
+            color: var(--green-dark);
+            background: var(--white);
+        }
+
+        .top-socials svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         .status-pill {
@@ -110,7 +145,7 @@
             gap: 28px;
             padding: 12px clamp(18px, 5vw, 76px);
             border-bottom: 1px solid rgba(21, 33, 29, .08);
-            background: var(--white);
+            background: #fbfffd;
             backdrop-filter: blur(14px);
         }
 
@@ -143,6 +178,19 @@
 
         .nav-item {
             position: relative;
+        }
+
+        .nav-item.has-submenu > .nav-trigger {
+            gap: 6px;
+        }
+
+        .nav-item.has-submenu > .nav-trigger::after {
+            width: 7px;
+            height: 7px;
+            content: "";
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
         }
 
         .nav a,
@@ -178,18 +226,18 @@
 
         .submenu {
             position: absolute;
-            top: calc(100% + 10px);
+            top: 100%;
             left: 0;
             z-index: 30;
             display: grid;
-            min-width: 210px;
-            padding: 8px;
+            min-width: 220px;
+            padding: 10px 8px 8px;
             border: 1px solid var(--line);
             background: var(--white);
             box-shadow: 0 18px 42px rgba(21, 33, 29, .13);
             opacity: 0;
             pointer-events: none;
-            transform: translateY(8px);
+            transform: translateY(6px);
             transition: opacity .18s ease, transform .18s ease;
         }
 
@@ -1025,6 +1073,116 @@
             text-transform: uppercase;
         }
 
+        .newsletter-section {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: minmax(0, .9fr) minmax(360px, .74fr);
+            gap: clamp(18px, 3vw, 34px);
+            align-items: center;
+            padding: clamp(28px, 4vw, 46px) clamp(18px, 5vw, 76px);
+            background:
+                linear-gradient(135deg, rgba(6, 63, 46, .98), rgba(8, 115, 72, .95)),
+                #087348;
+            color: var(--white);
+        }
+
+        .newsletter-section::before {
+            position: absolute;
+            inset: 0;
+            content: "";
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255, 255, 255, .08) 1px, transparent 1px);
+            background-size: 46px 46px;
+            mask-image: linear-gradient(90deg, rgba(0, 0, 0, .45), transparent 76%);
+        }
+
+        .newsletter-section::after {
+            position: absolute;
+            right: clamp(18px, 7vw, 120px);
+            bottom: -96px;
+            width: 260px;
+            height: 260px;
+            content: "";
+            border: 32px solid rgba(255, 255, 255, .08);
+            border-radius: 999px;
+        }
+
+        .newsletter-copy {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+        }
+
+        .newsletter-kicker {
+            display: inline-flex;
+            min-height: 34px;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 0 12px;
+            border: 1px solid rgba(255, 255, 255, .34);
+            color: #ffe0a4;
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .newsletter-copy h2 {
+            margin: 0;
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1.08;
+        }
+
+        .newsletter-copy p {
+            max-width: 620px;
+            margin: 16px 0 0;
+            color: rgba(255, 255, 255, .82);
+            line-height: 1.65;
+        }
+
+        .newsletter-form {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, .34);
+            background: rgba(255, 255, 255, .18);
+            box-shadow: 0 24px 70px rgba(6, 63, 46, .38);
+            backdrop-filter: blur(10px);
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            min-height: 50px;
+            border: 0;
+            padding: 0 18px;
+            color: var(--green-dark);
+            background: var(--white);
+            font: inherit;
+            outline: 0;
+        }
+
+        .newsletter-form button {
+            min-height: 50px;
+            border: 0;
+            padding: 0 24px;
+            color: var(--white);
+            background: var(--coral);
+            font: inherit;
+            font-weight: 900;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover,
+        .newsletter-form button:focus-visible {
+            background: var(--green-dark);
+            outline: 0;
+        }
+
         .trust-section {
             display: grid;
             grid-template-columns: minmax(42px, 80px) minmax(300px, .95fr) minmax(320px, 1.05fr);
@@ -1127,6 +1285,269 @@
             color: #59625f;
             font-size: clamp(16px, 1.6vw, 21px);
             line-height: 1.55;
+        }
+
+        .testimonials-section {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(62px, 7vw, 98px) clamp(18px, 5vw, 76px);
+            color: #101820;
+            background: var(--white);
+        }
+
+        .testimonials-section::before {
+            display: none;
+        }
+
+        .testimonials-wrap {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            width: min(1020px, 100%);
+            margin: 0 auto;
+            gap: clamp(34px, 5vw, 70px);
+        }
+
+        .testimonials-copy {
+            display: grid;
+            justify-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .testimonials-kicker {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .testimonials-kicker::before {
+            display: none;
+        }
+
+        .testimonials-copy::after {
+            width: 66px;
+            height: 4px;
+            margin-top: 12px;
+            content: "";
+            background: var(--green);
+        }
+
+        .testimonials-copy h2 {
+            margin: 0;
+            max-width: 640px;
+            color: #101820;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 900;
+            line-height: 1.12;
+        }
+
+        .testimonials-copy p {
+            display: none;
+        }
+
+        .testimonial-feature {
+            display: none;
+        }
+
+        .testimonial-feature strong {
+            color: #ffe0a4;
+            font-size: clamp(32px, 4vw, 54px);
+            line-height: 1;
+        }
+
+        .testimonial-feature span {
+            color: rgba(255, 255, 255, .84);
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1.5;
+        }
+
+        .testimonials-carousel {
+            display: grid;
+            gap: 34px;
+            min-width: 0;
+        }
+
+        .testimonials-viewport {
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 18px;
+            transition: transform .55s ease;
+            will-change: transform;
+        }
+
+        .testimonial-card {
+            position: relative;
+            display: grid;
+            min-width: 100%;
+            gap: 28px;
+            min-height: 286px;
+            align-content: center;
+            padding: clamp(34px, 4vw, 58px) clamp(28px, 5vw, 80px);
+            border: 1px solid rgba(15, 111, 77, .22);
+            border-top: 4px solid var(--green);
+            background: var(--white);
+            color: var(--ink);
+            box-shadow: 0 18px 46px rgba(15, 111, 77, .08);
+        }
+
+        .testimonial-card::before {
+            content: "''";
+            position: absolute;
+            top: clamp(34px, 4vw, 55px);
+            left: clamp(28px, 5vw, 80px);
+            color: var(--green);
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .testimonial-card blockquote {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            padding-left: 36px;
+            color: #101820;
+            font-size: clamp(20px, 2vw, 27px);
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .testimonial-person {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 18px;
+            padding-left: 0;
+        }
+
+        .testimonial-identity {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .testimonial-avatar {
+            display: grid;
+            width: 68px;
+            height: 68px;
+            flex: 0 0 68px;
+            place-items: center;
+            overflow: hidden;
+            color: var(--white);
+            background: var(--green);
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-identity strong {
+            display: block;
+            color: #101820;
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .testimonial-identity span {
+            display: block;
+            margin-top: 4px;
+            color: #4d5663;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .testimonial-highlight {
+            display: none;
+        }
+
+        .testimonial-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .testimonial-arrows {
+            display: contents;
+        }
+
+        .testimonial-arrow {
+            display: grid;
+            width: 56px;
+            height: 56px;
+            place-items: center;
+            border: 1px solid rgba(15, 111, 77, .24);
+            color: #101820;
+            background: var(--white);
+            cursor: pointer;
+            transition: border-color .18s ease, color .18s ease, transform .18s ease;
+        }
+
+        .testimonial-arrow.prev {
+            order: 1;
+        }
+
+        .testimonial-arrow.next {
+            order: 3;
+        }
+
+        .testimonial-arrow:hover,
+        .testimonial-arrow:focus-visible {
+            border-color: var(--green);
+            color: var(--green);
+            background: var(--white);
+            outline: 0;
+            transform: translateY(-1px);
+        }
+
+        .testimonial-arrow svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            order: 2;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border: 0;
+            background: #d8d8d8;
+            cursor: pointer;
+        }
+
+        .testimonial-dot.is-active {
+            width: 34px;
+            background: var(--green);
         }
 
         .events-section,
@@ -1498,6 +1919,12 @@
             list-style: none;
         }
 
+        .footer-links.two-columns {
+            grid-template-columns: repeat(2, max-content);
+            column-gap: 18px;
+            row-gap: 11px;
+        }
+
         .footer-links a,
         .footer-contact a {
             color: rgba(255, 255, 255, .78);
@@ -1545,6 +1972,60 @@
             font-size: 14px;
             font-weight: 900;
             text-transform: uppercase;
+        }
+
+        .floating-actions {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 60;
+            display: grid;
+            gap: 10px;
+        }
+
+        .floating-action {
+            display: grid;
+            width: 52px;
+            height: 52px;
+            place-items: center;
+            border: 1px solid var(--green);
+            background: var(--green);
+            color: var(--white);
+            cursor: pointer;
+            box-shadow: 0 16px 36px rgba(7, 63, 49, .22);
+        }
+
+        .floating-action svg {
+            width: 23px;
+            height: 23px;
+            fill: currentColor;
+        }
+
+        .whatsapp-action {
+            border-color: #25d366;
+            background: #25d366;
+        }
+
+        .whatsapp-action span {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
+
+        .back-to-top {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(8px);
+            transition: opacity .2s ease, transform .2s ease;
+        }
+
+        .back-to-top.is-visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
         }
 
         .volunteer-button {
@@ -1693,6 +2174,15 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .newsletter-section {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
             .trust-section {
                 grid-template-columns: 1fr;
             }
@@ -1700,6 +2190,19 @@
             .trust-vertical {
                 justify-self: start;
                 writing-mode: horizontal-tb;
+            }
+
+            .testimonials-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-copy {
+                position: static;
+            }
+
+            .testimonial-card:nth-child(2),
+            .testimonial-card:nth-child(3) {
+                margin: 0;
             }
 
             .section-head {
@@ -1738,12 +2241,6 @@
         }
 
         @media (max-width: 640px) {
-            .top-bar,
-            .top-group {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
             .top-bar {
                 gap: 10px;
             }
@@ -1821,6 +2318,15 @@
             .trust-item {
                 grid-template-columns: 1fr;
                 gap: 10px;
+            }
+
+            .testimonial-person {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .testimonial-highlight {
+                white-space: normal;
             }
 
             .news-grid,
@@ -2236,6 +2742,71 @@
             background: var(--green);
         }
 
+        .projects-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            padding-top: 10px;
+        }
+
+        .projects-grid .cause-card {
+            min-width: 0;
+        }
+
+        .projects-grid .cause-image {
+            aspect-ratio: 16 / 10;
+            min-height: 0;
+        }
+
+        .projects-grid .cause-image img {
+            display: block;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+        }
+
+        .project-card-summary {
+            display: -webkit-box;
+            margin: 12px 0 0;
+            overflow: hidden;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.55;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+
+        .project-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .project-meta-pill {
+            display: inline-flex;
+            min-height: 30px;
+            align-items: center;
+            padding: 0 10px;
+            border: 1px solid rgba(8, 115, 72, .18);
+            background: #f4fbf7;
+            color: var(--green-dark);
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .projects-grid .cause-link,
+        .projects-grid .cause-link.gold {
+            width: max-content;
+            min-height: 38px;
+            margin-top: 18px;
+            padding: 0 14px;
+            font-size: 13px;
+        }
+
         @media (max-width: 920px) {
             .causes-carousel {
                 padding-inline: 54px;
@@ -2243,6 +2814,10 @@
 
             .cause-card {
                 min-width: calc((100% - 22px) / 2);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
@@ -2253,6 +2828,10 @@
 
             .cause-card {
                 min-width: 100%;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
 
             .cause-arrow {
@@ -2774,6 +3353,94 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+
+        .causes-track .cause-card {
+            width: auto;
+            min-width: 0;
+            min-height: 0 !important;
+            grid-template-columns: 1fr;
+            gap: 0;
+            align-items: stretch;
+            padding: 0;
+            background: var(--white);
+            color: var(--ink);
+            box-shadow: 0 18px 42px rgba(21, 33, 29, .09);
+        }
+
+        #causes .causes-carousel {
+            padding: 10px 0 0;
+            overflow: visible;
+        }
+
+        #causes .causes-track {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            transform: none !important;
+        }
+
+        #causes .cause-arrow,
+        #causes .cause-controls {
+            display: none;
+        }
+
+        .causes-track .cause-card::before {
+            display: none;
+        }
+
+        .causes-track .cause-image {
+            order: -1;
+            min-height: 170px;
+            aspect-ratio: 16 / 10;
+        }
+
+        .causes-track .cause-image img {
+            display: block;
+            min-height: 170px;
+        }
+
+        .causes-track .cause-content {
+            display: grid;
+            min-height: 0 !important;
+            gap: 14px;
+            padding: 18px !important;
+        }
+
+        .causes-track .cause-card h3 {
+            font-size: 19px !important;
+            line-height: 1.25 !important;
+        }
+
+        .causes-track .project-card-summary {
+            -webkit-line-clamp: 2;
+        }
+
+        .home-cause-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .home-cause-actions .cause-link,
+        .home-cause-actions .cause-link.gold {
+            width: 100%;
+        }
+
+        @media (max-width: 920px) {
+            #causes .causes-track {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            #causes .causes-track {
+                grid-template-columns: 1fr;
+            }
+
+            .home-cause-actions {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2798,6 +3465,7 @@
         </div>
         <div class="top-group">
             <span>Registration No: {{ $settings['registration_number'] }}</span>
+            @include('partials.social-links', ['class' => 'top-socials'])
         </div>
     </div>
 
@@ -2809,8 +3477,9 @@
         </a>
         <nav class="nav" aria-label="Main navigation">
             @foreach ($settings['menus'] as $menu)
-                <div class="nav-item {{ $menu['highlight'] ? 'donate-link' : '' }}">
-                    <a class="nav-trigger" href="{{ $menu['url'] }}">{{ $menu['label'] }}</a>
+                @php $hasChildren = ! empty($menu['children']); @endphp
+                <div class="nav-item {{ $hasChildren ? 'has-submenu' : '' }} {{ $menu['highlight'] ? 'donate-link' : '' }}">
+                    <a class="nav-trigger" href="{{ $menu['url'] }}" @if ($hasChildren) aria-haspopup="true" aria-expanded="false" @endif>{{ $menu['label'] }}</a>
                     @if (! empty($menu['children']))
                         <div class="submenu">
                             @foreach ($menu['children'] as $child)
@@ -2901,8 +3570,9 @@
 
         <section id="projects" class="impact-section" aria-label="Nicoville sustainable projects">
             <div class="impact-images">
-                @php $impactSlides = array_values($slides); @endphp
-                @foreach (array_slice($impactSlides, 0, 3) as $columnIndex => $slide)
+                @php $impactColumns = array_values($impact['columns'] ?? []); @endphp
+                @foreach (array_slice($impactColumns, 0, 3) as $columnIndex => $column)
+                    @php $impactSlides = array_values($column['images'] ?? []); @endphp
                     <figure class="impact-image impact-rotating-gallery">
                         @foreach ($impactSlides as $imageIndex => $imageSlide)
                             @php $isActiveImpactImage = $imageIndex === ($columnIndex % count($impactSlides)); @endphp
@@ -2924,67 +3594,83 @@
             </div>
         </section>
 
-        <section id="causes" class="causes-section" aria-label="Contribute to our causes">
-            <div class="causes-heading">
-                <h2>{{ $pageContent['home']['causes_heading'] }}</h2>
-                <p>{{ $pageContent['home']['causes_intro'] }}</p>
-            </div>
-
-            <div class="causes-carousel">
-                <button class="cause-arrow prev" type="button" aria-label="Previous cause">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="m15 18-6-6 6-6"></path>
-                    </svg>
-                </button>
-
-                <div class="causes-track">
-                    @foreach ($causes as $cause)
-                        @php
-                            $progress = $cause['target'] > 0 ? min(100, (int) round(($cause['raised'] / $cause['target']) * 100)) : 0;
-                        @endphp
-                        <article class="cause-card">
-                            <div class="cause-content">
-                                <div class="cause-body">
-                                    <h3>{{ $cause['title'] }}</h3>
-                                    <div class="funding-summary">
-                                        <div class="funding-box">
-                                            <span>Target</span>
-                                            <strong>Sh{{ number_format($cause['target']) }}</strong>
-                                        </div>
-                                        <div class="funding-box">
-                                            <span>Raised</span>
-                                            <strong>Sh{{ number_format($cause['raised']) }}</strong>
-                                        </div>
-                                    </div>
-                                    <div class="progress-wrap">
-                                        <div class="progress-meta">
-                                            <span>Raised so far</span>
-                                            <span>{{ $progress }}%</span>
-                                        </div>
-                                        <div class="progress-bar" style="--progress: {{ $progress }}%;"><span></span></div>
-                                    </div>
-                                </div>
-                                <a class="cause-link {{ $loop->odd ? 'gold' : '' }}" href="/donate?cause={{ urlencode($cause['title']) }}">Contribute to Cause</a>
-                            </div>
-                            <div class="cause-image">
-                                <span class="cause-kicker">{{ $cause['category'] }}</span>
-                                <img src="{{ $cause['image'] }}" alt="{{ $cause['title'] }}">
-                            </div>
-                        </article>
-                    @endforeach
+        @if (! empty($causes))
+            <section id="causes" class="causes-section" aria-label="Our causes">
+                <div class="causes-heading">
+                    <h2>Our Causes</h2>
+                    <p>Support the urgent community needs Nicoville is responding to through education, nutrition, care, and family support.</p>
                 </div>
 
-                <button class="cause-arrow next" type="button" aria-label="Next cause">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="m9 18 6-6-6-6"></path>
-                    </svg>
-                </button>
+                <div class="causes-carousel">
+                    <button class="cause-arrow prev" type="button" aria-label="Previous cause">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M15 18l-6-6 6-6"></path>
+                        </svg>
+                    </button>
 
-                <div class="cause-controls" aria-label="Cause slider controls">
+                    <div class="causes-track">
+                        @foreach ($causes as $cause)
+                            <article class="cause-card">
+                                <div class="cause-content">
+                                    <div class="cause-body">
+                                        <h3>{{ $cause['title'] }}</h3>
+                                        <p class="project-card-summary">{{ $cause['brief'] }}</p>
+                                    </div>
+
+                                    <div class="home-cause-actions">
+                                        <a class="cause-link {{ $loop->odd ? 'gold' : '' }}" href="/donate?cause={{ urlencode($cause['title']) }}">Donate</a>
+                                        <a class="cause-link {{ $loop->odd ? '' : 'gold' }}" href="/causes/{{ $cause['slug'] }}">Details</a>
+                                    </div>
+                                </div>
+                                <div class="cause-image">
+                                    <span class="cause-kicker">{{ $cause['category'] }}</span>
+                                    <img src="{{ $cause['image'] }}" alt="{{ $cause['title'] }}">
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+
+                    <button class="cause-arrow next" type="button" aria-label="Next cause">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M9 6l6 6-6 6"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="cause-controls" aria-label="Cause carousel controls">
                     @foreach ($causes as $cause)
                         <button class="cause-dot {{ $loop->first ? 'is-active' : '' }}" type="button" aria-label="Show cause {{ $loop->iteration }}"></button>
                     @endforeach
                 </div>
+            </section>
+        @endif
+
+        <section id="projects" class="causes-section" aria-label="Our projects">
+            <div class="causes-heading">
+                <h2>Our Projects</h2>
+                <p>Explore the community-led projects restoring dignity, education, health, and hope across the people we serve.</p>
+            </div>
+
+            <div class="projects-grid">
+                @foreach ($projects as $project)
+                    <article class="cause-card">
+                        <div class="cause-content">
+                            <div class="cause-body">
+                                <h3>{{ $project['title'] }}</h3>
+                                <p class="project-card-summary">{{ $project['summary'] }}</p>
+                                <div class="project-meta-row">
+                                    <span class="project-meta-pill">{{ $project['status'] }}</span>
+                                    <span class="project-meta-pill">Started {{ $project['started'] ?: 'Active' }}</span>
+                                </div>
+                            </div>
+                            <a class="cause-link {{ $loop->odd ? 'gold' : '' }}" href="/projects/{{ $project['slug'] }}">View Project</a>
+                        </div>
+                        <div class="cause-image">
+                            <span class="cause-kicker">{{ $project['category'] }}</span>
+                            <img src="{{ $project['image'] }}" alt="{{ $project['title'] }}">
+                        </div>
+                    </article>
+                @endforeach
             </div>
         </section>
 
@@ -2999,6 +3685,23 @@
                     <span>{{ $stat['label'] }}</span>
                 </article>
             @endforeach
+        </section>
+
+        <section class="newsletter-section" aria-label="Subscribe to Nicoville newsletter">
+            <div class="newsletter-copy">
+                <span class="newsletter-kicker">Stay connected</span>
+                <h2>Subscribe to Our Newsletter</h2>
+            </div>
+
+            <form class="newsletter-form" action="/contact-messages" method="POST">
+                @csrf
+                <input name="name" type="hidden" value="Newsletter Subscriber">
+                <input name="email" type="email" placeholder="Email address" required>
+                <input name="phone" type="hidden" value="">
+                <input name="reason" type="hidden" value="Newsletter Subscription">
+                <input name="message" type="hidden" value="Please subscribe me to the Nicoville newsletter.">
+                <button type="submit">Subscribe Now</button>
+            </form>
         </section>
 
         <section class="trust-section" aria-label="Why donate to Nicoville">
@@ -3040,85 +3743,149 @@
             </div>
         </section>
 
-        <section id="events" class="events-section" aria-label="Upcoming events">
-            <div class="section-head">
-                <div>
-                    <span>{{ $pageContent['home']['events_kicker'] }}</span>
-                    <h2>{{ $pageContent['home']['events_title'] }}</h2>
+        <section id="testimonials" class="testimonials-section" aria-label="Testimonials">
+            <div class="testimonials-wrap">
+                <div class="testimonials-copy">
+                    <span class="testimonials-kicker">{{ $pageContent['home']['testimonials_kicker'] }}</span>
+                    <h2>{{ $pageContent['home']['testimonials_title'] }}</h2>
+                    <p>{{ $pageContent['home']['testimonials_intro'] }}</p>
+                    <div class="testimonial-feature">
+                        <strong>{{ count($pageContent['home']['testimonials']) }}+</strong>
+                        <span>Shared stories from families, donors, volunteers, and community friends who have seen care become action.</span>
+                    </div>
                 </div>
-                <p>{{ $pageContent['home']['events_intro'] }}</p>
-            </div>
 
-            <div class="events-grid">
-                @php $featuredEvent = $events[0] ?? null; @endphp
-                @if ($featuredEvent)
-                <article class="event-feature">
-                    <span class="event-tag">{{ $featuredEvent['category'] }}</span>
-                    <div class="event-image">
-                        <img src="{{ $featuredEvent['image'] }}" alt="{{ $featuredEvent['title'] }}">
-                    </div>
-                    <div class="event-content">
-                        <div class="event-date">
-                            <strong>{{ $featuredEvent['date'] }}</strong>
-                            <span>{{ $featuredEvent['time'] }}</span>
+                <div class="testimonials-carousel" data-testimonial-carousel>
+                    <div class="testimonials-viewport">
+                        <div class="testimonials-track" data-testimonial-track>
+                            @foreach ($pageContent['home']['testimonials'] as $testimonial)
+                                <article class="testimonial-card" data-testimonial-card>
+                                    <blockquote>{{ $testimonial['quote'] }}</blockquote>
+                                    <div class="testimonial-person">
+                                        <div class="testimonial-identity">
+                                            <div class="testimonial-avatar" aria-hidden="true">
+                                                @if (filled($testimonial['image'] ?? null))
+                                                    <img src="{{ $testimonial['image'] }}" alt="">
+                                                @else
+                                                    {{ strtoupper(substr($testimonial['name'], 0, 1)) }}
+                                                @endif
+                                            </div>
+                                            <div>
+                                                <strong>{{ $testimonial['name'] }}</strong>
+                                                <span>{{ $testimonial['role'] }}</span>
+                                            </div>
+                                        </div>
+                                        <span class="testimonial-highlight">{{ $testimonial['highlight'] }}</span>
+                                    </div>
+                                </article>
+                            @endforeach
                         </div>
-                        <h3>{{ $featuredEvent['title'] }}</h3>
-                        <p>{{ $featuredEvent['summary'] }}</p>
-                        <ul class="event-details">
-                            <li><b>Venue</b> {{ $featuredEvent['venue'] }}</li>
-                            <li><b>Program</b> {{ $featuredEvent['category'] }}</li>
-                        </ul>
                     </div>
-                </article>
-                @endif
 
-                <div class="event-stack">
-                    @foreach (array_slice($events, 1, 3) as $event)
-                        <article class="event-card">
-                            <div class="event-image">
-                                <span class="event-tag">{{ $event['category'] }}</span>
-                                <img src="{{ $event['image'] }}" alt="{{ $event['title'] }}">
+                    @if (count($pageContent['home']['testimonials']) > 1)
+                        <div class="testimonial-controls" aria-label="Testimonial slider controls">
+                            <div class="testimonial-arrows">
+                                <button class="testimonial-arrow prev" type="button" aria-label="Previous testimonial" data-testimonial-prev>
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+                                </button>
+                                <button class="testimonial-arrow next" type="button" aria-label="Next testimonial" data-testimonial-next>
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+                                </button>
                             </div>
-                            <div class="event-content">
-                                <div class="event-meta">
-                                    <span>{{ $event['date'] }}</span>
-                                    <span>{{ $event['time'] }}</span>
+
+                            <div class="testimonial-dots">
+                                @foreach ($pageContent['home']['testimonials'] as $index => $testimonial)
+                                    <button class="testimonial-dot {{ $index === 0 ? 'is-active' : '' }}" type="button" aria-label="Show testimonial {{ $index + 1 }}" data-testimonial-dot></button>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </section>
+
+        {{-- Hidden temporarily: latest events/programs and blogs/news will be reused later with timer-based display logic. --}}
+        @if (false)
+            <section id="events" class="events-section" aria-label="Upcoming events">
+                <div class="section-head">
+                    <div>
+                        <span>{{ $pageContent['home']['events_kicker'] }}</span>
+                        <h2>{{ $pageContent['home']['events_title'] }}</h2>
+                    </div>
+                    <p>{{ $pageContent['home']['events_intro'] }}</p>
+                </div>
+
+                <div class="events-grid">
+                    @php $featuredEvent = $events[0] ?? null; @endphp
+                    @if ($featuredEvent)
+                    <article class="event-feature">
+                        <span class="event-tag">{{ $featuredEvent['category'] }}</span>
+                        <div class="event-image">
+                            <img src="{{ $featuredEvent['image'] }}" alt="{{ $featuredEvent['title'] }}">
+                        </div>
+                        <div class="event-content">
+                            <div class="event-date">
+                                <strong>{{ $featuredEvent['date'] }}</strong>
+                                <span>{{ $featuredEvent['time'] }}</span>
+                            </div>
+                            <h3>{{ $featuredEvent['title'] }}</h3>
+                            <p>{{ $featuredEvent['summary'] }}</p>
+                            <ul class="event-details">
+                                <li><b>Venue</b> {{ $featuredEvent['venue'] }}</li>
+                                <li><b>Program</b> {{ $featuredEvent['category'] }}</li>
+                            </ul>
+                        </div>
+                    </article>
+                    @endif
+
+                    <div class="event-stack">
+                        @foreach (array_slice($events, 1, 3) as $event)
+                            <article class="event-card">
+                                <div class="event-image">
+                                    <span class="event-tag">{{ $event['category'] }}</span>
+                                    <img src="{{ $event['image'] }}" alt="{{ $event['title'] }}">
                                 </div>
-                                <h3>{{ $event['title'] }}</h3>
-                                <a class="event-details-link" href="/events/{{ $event['slug'] }}">Event Details</a>
+                                <div class="event-content">
+                                    <div class="event-meta">
+                                        <span>{{ $event['date'] }}</span>
+                                        <span>{{ $event['time'] }}</span>
+                                    </div>
+                                    <h3>{{ $event['title'] }}</h3>
+                                    <a class="event-details-link" href="/events/{{ $event['slug'] }}">Event Details</a>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+
+            <section id="news" class="news-section" aria-label="Blogs and news">
+                <div class="section-head">
+                    <div>
+                        <span>{{ $pageContent['home']['news_kicker'] }}</span>
+                        <h2>{{ $pageContent['home']['news_title'] }}</h2>
+                    </div>
+                    <p>{{ $pageContent['home']['news_intro'] }}</p>
+                </div>
+
+                <div class="news-grid">
+                    @foreach (array_slice($posts, 0, 3) as $post)
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img src="{{ $post['image'] }}" alt="{{ $post['title'] }}">
+                                <span class="news-category">{{ $post['category'] }}</span>
+                            </div>
+                            <div class="news-card-body">
+                                <span class="news-date">{{ $post['date'] }}</span>
+                                <h3>{{ $post['title'] }}</h3>
+                                <p>{{ $post['summary'] }}</p>
+                                <a class="news-link" href="/news/{{ $post['slug'] }}">{{ $post['link_label'] ?? 'Read More' }}</a>
                             </div>
                         </article>
                     @endforeach
                 </div>
-            </div>
-        </section>
-
-        <section id="news" class="news-section" aria-label="Blogs and news">
-            <div class="section-head">
-                <div>
-                    <span>{{ $pageContent['home']['news_kicker'] }}</span>
-                    <h2>{{ $pageContent['home']['news_title'] }}</h2>
-                </div>
-                <p>{{ $pageContent['home']['news_intro'] }}</p>
-            </div>
-
-            <div class="news-grid">
-                @foreach (array_slice($posts, 0, 3) as $post)
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="{{ $post['image'] }}" alt="{{ $post['title'] }}">
-                            <span class="news-category">{{ $post['category'] }}</span>
-                        </div>
-                        <div class="news-card-body">
-                            <span class="news-date">{{ $post['date'] }}</span>
-                            <h3>{{ $post['title'] }}</h3>
-                            <p>{{ $post['summary'] }}</p>
-                            <a class="news-link" href="{{ $post['link_url'] ?? '/news' }}">{{ $post['link_label'] ?? 'Read More' }}</a>
-                        </div>
-                    </article>
-                @endforeach
-            </div>
-        </section>
+            </section>
+        @endif
 
         <section id="contact" class="contact-section" aria-label="Contact us">
             <div class="contact-grid">
@@ -3141,7 +3908,11 @@
                     </ul>
                 </div>
 
-                <form class="contact-form" action="mailto:{{ $settings['email'] }}" method="POST" enctype="text/plain">
+                @if (session('status'))
+                    <div class="contact-form">{{ session('status') }}</div>
+                @endif
+                <form class="contact-form" action="/contact-messages" method="POST">
+                    @csrf
                     <div class="form-row">
                         <label>
                             Full Name
@@ -3195,7 +3966,7 @@
 
             <div class="footer-col">
                 <h3>Quick Links</h3>
-                <ul class="footer-links">
+                <ul class="footer-links two-columns">
                     @foreach ($settings['menus'] as $menu)
                         <li><a href="{{ $menu['url'] }}">{{ $menu['label'] }}</a></li>
                         @foreach ($menu['children'] ?? [] as $child)
@@ -3223,20 +3994,7 @@
                     <li>Mon - Fri: 8:00 AM - 5:00 PM</li>
                 </ul>
                 <span class="footer-social-title">Follow Us</span>
-                <div class="footer-socials" aria-label="Social media links">
-                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v5h4v-5h3.2l.8-4h-4V9c0-.7.3-1 1-1z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm5.5-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
-                    </a>
-                    <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.2L6.7 22H3.6l7.3-8.4L3.4 2h6.3l4.3 5.7L18.9 2zm-1.1 17.9h1.7L8.8 4H7l10.8 15.9z"/></svg>
-                    </a>
-                    <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C15.8 3.8 12 3.8 12 3.8h0s-3.8 0-6.7.2c-.4.1-1.3.1-2.1.9-.6.7-.8 2.3-.8 2.3S2.2 9.1 2.2 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.7.2 6.4.2 6.4.2s3.8 0 6.7-.2c.4-.1 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM10.1 14.8V8.3l5.9 3.3-5.9 3.2z"/></svg>
-                    </a>
-                </div>
+                @include('partials.social-links', ['class' => 'footer-socials'])
             </div>
         </div>
 
@@ -3250,21 +4008,30 @@
         </div>
     </footer>
 
+    @include('partials.floating-actions')
+
     <script>
         const slides = Array.from(document.querySelectorAll('.slide'));
         const dots = Array.from(document.querySelectorAll('.slider-dot'));
         const causeTrack = document.querySelector('.causes-track');
-        const causeCards = Array.from(document.querySelectorAll('.cause-card'));
+        const causeCards = Array.from(document.querySelectorAll('.causes-track .cause-card'));
         const causeDots = Array.from(document.querySelectorAll('.cause-dot'));
         const causePrev = document.querySelector('.cause-arrow.prev');
         const causeNext = document.querySelector('.cause-arrow.next');
         const statNumbers = Array.from(document.querySelectorAll('.stat-number'));
         const impactGalleries = Array.from(document.querySelectorAll('.impact-rotating-gallery'));
         const donationForms = Array.from(document.querySelectorAll('[data-donation-form]'));
+        const testimonialTrack = document.querySelector('[data-testimonial-track]');
+        const testimonialCards = Array.from(document.querySelectorAll('[data-testimonial-card]'));
+        const testimonialDots = Array.from(document.querySelectorAll('[data-testimonial-dot]'));
+        const testimonialPrev = document.querySelector('[data-testimonial-prev]');
+        const testimonialNext = document.querySelector('[data-testimonial-next]');
         let activeSlide = 0;
         let activeCause = 0;
+        let activeTestimonial = 0;
         let sliderTimer = null;
         let causeTimer = null;
+        let testimonialTimer = null;
         let statsAnimated = false;
 
         function formatDonationAmount(value, currency) {
@@ -3415,6 +4182,37 @@
             }, 5200);
         }
 
+        function showTestimonial(index) {
+            if (! testimonialTrack || ! testimonialCards.length) {
+                return;
+            }
+
+            activeTestimonial = (index + testimonialCards.length) % testimonialCards.length;
+
+            const cardWidth = testimonialCards[0].getBoundingClientRect().width;
+            const gap = Number.parseFloat(window.getComputedStyle(testimonialTrack).gap) || 0;
+            testimonialTrack.style.transform = `translateX(-${activeTestimonial * (cardWidth + gap)}px)`;
+
+            testimonialDots.forEach((dot, dotIndex) => {
+                dot.classList.toggle('is-active', dotIndex === activeTestimonial);
+            });
+        }
+
+        function startTestimonialSlider() {
+            if (testimonialCards.length <= 1) {
+                return;
+            }
+
+            testimonialTimer = window.setInterval(() => {
+                showTestimonial(activeTestimonial + 1);
+            }, 5600);
+        }
+
+        function restartTestimonialSlider() {
+            window.clearInterval(testimonialTimer);
+            startTestimonialSlider();
+        }
+
         function startImpactImageRotation() {
             impactGalleries.forEach((gallery, galleryIndex) => {
                 const images = Array.from(gallery.querySelectorAll('.impact-rotating-image'));
@@ -3471,8 +4269,26 @@
             startCauseSlider();
         });
 
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showTestimonial(index);
+                restartTestimonialSlider();
+            });
+        });
+
+        testimonialPrev?.addEventListener('click', () => {
+            showTestimonial(activeTestimonial - 1);
+            restartTestimonialSlider();
+        });
+
+        testimonialNext?.addEventListener('click', () => {
+            showTestimonial(activeTestimonial + 1);
+            restartTestimonialSlider();
+        });
+
         window.addEventListener('resize', () => {
             showCause(activeCause);
+            showTestimonial(activeTestimonial);
         });
 
         function animateStats() {
@@ -3519,6 +4335,8 @@
         startImpactImageRotation();
         showCause(0);
         startCauseSlider();
+        showTestimonial(0);
+        startTestimonialSlider();
     </script>
 </body>
 </html>
