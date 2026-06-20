@@ -51,6 +51,7 @@
         .button { color:var(--white); background:var(--coral); }
         .small-button { border:1px solid var(--green); color:var(--green-dark); background:rgba(15,111,77,.08); }
         @media (max-width:900px){ .admin-layout,.form-grid,.fields{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} .page-head,.actions{display:block;} .button,.small-button{margin-top:12px;} .field.full{grid-column:auto;} .avatar-preview{width:150px;height:150px;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -203,5 +204,6 @@
 
         nameInput?.addEventListener('input', showInitial);
     </script>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

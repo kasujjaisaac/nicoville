@@ -51,6 +51,7 @@
         .certificate-card p { margin:0 0 10px; color:var(--muted); }
         .actions { display:flex; flex-wrap:wrap; gap:8px; }
         @media (max-width:980px){ .admin-layout,.grid,.certificate-card{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} .certificate-card img{width:100%;height:220px;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -161,5 +162,6 @@
             </div>
         </main>
     </div>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

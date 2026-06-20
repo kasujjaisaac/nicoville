@@ -57,6 +57,7 @@
         .save-button { min-height:50px; padding:0 24px; border:0; color:var(--white); background:var(--coral); font:inherit; font-weight:900; cursor:pointer; }
         .hint { padding:14px 16px; border-left:4px solid var(--green); background:rgba(15,111,77,.08); color:var(--green-dark); font-size:14px; line-height:1.55; }
         @media (max-width:820px){ .admin-layout{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} .form-row,.form-row.three{grid-template-columns:1fr;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -499,5 +500,6 @@
             </form>
         </main>
     </div>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

@@ -52,6 +52,7 @@
         .actions { position:sticky; bottom:0; display:flex; justify-content:flex-end; padding:16px 0; background:linear-gradient(transparent,var(--paper) 30%); }
         .save-button { min-height:50px; padding:0 24px; border:0; color:var(--white); background:var(--coral); font:inherit; font-weight:900; cursor:pointer; }
         @media (max-width:820px){ .admin-layout,.image-card{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -214,5 +215,6 @@
 
         reindexImages();
     </script>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

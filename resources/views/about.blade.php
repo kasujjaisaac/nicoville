@@ -576,6 +576,7 @@
                 flex-direction: column;
             }
         }
+        @include('partials.public-mobile-css')
     </style>
 </head>
 <body>
@@ -752,5 +753,6 @@
             </div>
         </div>
     </footer>
+    @include('partials.public-mobile-scripts')
 </body>
 </html>

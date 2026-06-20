@@ -52,6 +52,7 @@
         .actions { position:sticky; bottom:0; display:flex; justify-content:flex-end; padding:16px 0; background:linear-gradient(transparent,var(--paper) 30%); }
         .save-button { min-height:50px; padding:0 24px; border:0; color:var(--white); background:var(--coral); font:inherit; font-weight:900; cursor:pointer; }
         @media (max-width:900px){ .admin-layout,.member-card,.fields-grid{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} .field.full{grid-column:auto;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -259,5 +260,6 @@
 
         reindexMembers();
     </script>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

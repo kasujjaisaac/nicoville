@@ -18,12 +18,9 @@ use App\Http\Controllers\AdminTestimonialsController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\DonationController;
-use App\Http\Controllers\EventBookingController;
 use App\Support\CausesRepository;
-use App\Support\EventsRepository;
 use App\Support\HeroSliderRepository;
 use App\Support\ImpactSectionRepository;
-use App\Support\NewsRepository;
 use App\Support\PageContentRepository;
 use App\Support\ProjectsRepository;
 use App\Support\SiteSettingsRepository;
@@ -37,9 +34,7 @@ Route::get('/', function () {
         'projects' => app(ProjectsRepository::class)->all(),
         'causes' => $causes->all(),
         'causeRepo' => $causes,
-        'events' => app(EventsRepository::class)->all(),
         'pageContent' => app(PageContentRepository::class)->get(),
-        'posts' => app(NewsRepository::class)->all(),
         'impact' => app(ImpactSectionRepository::class)->get(),
         'slides' => app(HeroSliderRepository::class)->all(),
         'settings' => app(SiteSettingsRepository::class)->get(),
@@ -136,27 +131,6 @@ Route::get('/causes/{slug}', function (string $slug) {
 Route::get('/certificates', [CertificateController::class, 'index']);
 Route::get('/certificates/{slug}/image', [CertificateController::class, 'image']);
 
-Route::get('/news', function () {
-    return view('news', [
-        'active' => '/news',
-        'posts' => app(NewsRepository::class)->all(),
-        'settings' => app(SiteSettingsRepository::class)->get(),
-    ]);
-});
-
-Route::get('/news/{slug}', function (string $slug) {
-    $news = app(NewsRepository::class);
-    $post = $news->find($slug);
-
-    abort_if(! $post, 404);
-
-    return view('news-detail', [
-        'active' => '/news',
-        'post' => $post,
-        'settings' => app(SiteSettingsRepository::class)->get(),
-    ]);
-});
-
 Route::get('/contact', function () {
     return view('contact', [
         'active' => '/contact',
@@ -165,28 +139,6 @@ Route::get('/contact', function () {
     ]);
 });
 
-Route::get('/events', function () {
-    return view('events', [
-        'active' => '/events',
-        'events' => app(EventsRepository::class)->all(),
-        'settings' => app(SiteSettingsRepository::class)->get(),
-    ]);
-});
-
-Route::get('/events/{slug}', function (string $slug) {
-    $events = app(EventsRepository::class);
-    $event = $events->find($slug);
-
-    abort_if(! $event, 404);
-
-    return view('event-detail', [
-        'active' => '/events',
-        'event' => $event,
-        'settings' => app(SiteSettingsRepository::class)->get(),
-    ]);
-});
-
-Route::post('/events/{slug}/book', [EventBookingController::class, 'store']);
 Route::post('/contact-messages', [ContactMessageController::class, 'store']);
 Route::post('/donations', [DonationController::class, 'store']);
 Route::get('/donation-thank-you/{donation}', [DonationController::class, 'thankYou']);

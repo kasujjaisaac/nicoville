@@ -329,6 +329,7 @@
                 grid-template-columns: 1fr;
             }
         }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -472,5 +473,6 @@
             </main>
         </div>
     </div>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

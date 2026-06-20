@@ -143,6 +143,7 @@
             color: var(--green-dark);
             font-weight: 800;
         }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>

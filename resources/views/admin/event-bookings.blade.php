@@ -43,6 +43,7 @@
         .save-button { min-height:42px; border:0; color:var(--white); background:var(--coral); font:inherit; font-weight:900; cursor:pointer; }
         .pagination { margin-top:20px; }
         @media (max-width:820px){ .admin-layout,.booking-card,.stats{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -119,5 +120,6 @@
             <div class="pagination">{{ $bookings->links() }}</div>
         </main>
     </div>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

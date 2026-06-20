@@ -48,6 +48,7 @@
         .status { display:inline-flex; min-height:30px; align-items:center; padding:0 10px; background:rgba(217,155,43,.16); color:#785012; font-size:12px; font-weight:900; text-transform:uppercase; }
         @media (max-width:1020px){ .stats,.manager-grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
         @media (max-width:820px){ .admin-layout,.stats,.manager-grid,.booking-row{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} .page-head{display:block;} .view-site{margin-top:16px;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -147,5 +148,6 @@
             </section>
         </main>
     </div>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

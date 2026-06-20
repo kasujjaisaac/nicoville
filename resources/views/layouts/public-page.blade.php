@@ -93,6 +93,7 @@
         @yield('page_css')
         @media (max-width:980px){ .site-header{display:flex; flex-direction:column; align-items:flex-start;} .nav{justify-content:flex-start; flex-wrap:wrap;} .grid-2,.grid-3,.footer-grid{grid-template-columns:1fr;} }
         @media (max-width:640px){ h2{font-size:38px;} .form-row{grid-template-columns:1fr;} .footer-bottom{align-items:flex-start; flex-direction:column;} .floating-actions{right:12px;bottom:12px;} .floating-action{width:48px;height:48px;} }
+        @include('partials.public-mobile-css')
     </style>
 </head>
 <body>
@@ -207,6 +208,7 @@
         </div>
     </footer>
     @include('partials.floating-actions')
+    @include('partials.public-mobile-scripts')
     @yield('scripts')
 </body>
 </html>

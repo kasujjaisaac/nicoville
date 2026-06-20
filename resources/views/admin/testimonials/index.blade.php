@@ -59,6 +59,7 @@
         .section-actions { display:flex; justify-content:flex-end; margin-top:14px; }
         .empty { padding:34px; text-align:center; color:var(--muted); }
         @media (max-width:980px){ .admin-layout,.heading-grid,.testimonial-row{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} .testimonial-head{display:none;} .page-head{display:block;} .button{margin-top:14px;} .field.full{grid-column:auto;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -183,5 +184,6 @@
             </section>
         </main>
     </div>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

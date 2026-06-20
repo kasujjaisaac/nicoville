@@ -53,6 +53,7 @@
         @media (max-width:1100px){ .media-grid{grid-template-columns:repeat(3,minmax(0,1fr));} }
         @media (max-width:820px){ .admin-layout,.upload-panel{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} .media-grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
         @media (max-width:560px){ .media-grid{grid-template-columns:1fr;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -170,5 +171,6 @@
             }, 1400);
         });
     </script>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

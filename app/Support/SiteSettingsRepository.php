@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 class SiteSettingsRepository
 {
     private const FILE = 'site-settings.json';
+    private const TEMPORARILY_DISABLED_MENU_URLS = ['/events', '/news'];
 
     public function get(): array
     {
@@ -61,8 +62,6 @@ class SiteSettingsRepository
                 ]],
                 ['label' => 'Projects', 'url' => '/projects', 'highlight' => false, 'children' => []],
                 ['label' => 'Causes', 'url' => '/causes', 'highlight' => false, 'children' => []],
-                ['label' => 'Events', 'url' => '/events', 'highlight' => false, 'children' => []],
-                ['label' => 'News', 'url' => '/news', 'highlight' => false, 'children' => []],
                 ['label' => 'Certificates', 'url' => '/certificates', 'highlight' => false, 'children' => []],
                 ['label' => 'Contact', 'url' => '/contact', 'highlight' => false, 'children' => []],
                 ['label' => 'Donate', 'url' => '/donate', 'highlight' => true, 'children' => []],
@@ -89,6 +88,7 @@ class SiteSettingsRepository
                 ];
             })
             ->reject(fn (array $menu): bool => strcasecmp($menu['label'], 'Publications') === 0)
+            ->reject(fn (array $menu): bool => in_array($menu['url'], self::TEMPORARILY_DISABLED_MENU_URLS, true))
             ->filter(fn (array $menu): bool => $menu['label'] !== '')
             ->values()
             ->all();

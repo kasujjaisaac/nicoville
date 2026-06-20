@@ -56,6 +56,7 @@
         .actions { position:sticky; bottom:0; display:flex; justify-content:flex-end; padding:16px 0; background:linear-gradient(transparent,var(--paper) 30%); }
         .save-button { min-height:50px; padding:0 24px; border:0; color:var(--white); background:var(--coral); font:inherit; font-weight:900; cursor:pointer; }
         @media (max-width:900px){ .admin-layout,.heading-grid,.testimonial-card,.field-grid{grid-template-columns:1fr;} .sidebar{position:static;height:auto;} .page-head{display:block;} .preview-link{margin-top:16px;} }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -287,5 +288,6 @@
 
         reindexTestimonials();
     </script>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>

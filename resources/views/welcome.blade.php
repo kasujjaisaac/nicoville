@@ -3441,6 +3441,7 @@
                 grid-template-columns: 1fr;
             }
         }
+        @include('partials.public-mobile-css')
     </style>
 </head>
 <body>
@@ -4009,6 +4010,7 @@
     </footer>
 
     @include('partials.floating-actions')
+    @include('partials.public-mobile-scripts')
 
     <script>
         const slides = Array.from(document.querySelectorAll('.slide'));

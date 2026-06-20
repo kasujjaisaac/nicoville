@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -374,6 +374,7 @@
                 grid-column: auto;
             }
         }
+        @include('admin.partials.mobile-css')
     </style>
 </head>
 <body>
@@ -722,5 +723,6 @@
 
         reindexMenus();
     </script>
+    @include('admin.partials.mobile-scripts')
 </body>
 </html>
