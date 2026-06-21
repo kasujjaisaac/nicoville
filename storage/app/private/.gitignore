@@ -1,2 +1,8 @@
 *
 !.gitignore
+!*.json
+!certificates/
+!certificates/*.png
+!certificates/*.jpg
+!certificates/*.jpeg
+!certificates/*.webp

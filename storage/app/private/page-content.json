@@ -1,0 +1,176 @@
+{
+    "home": {
+        "impact_statement": "Our community programs help vulnerable children access education, nutritious meals, safety and care through practical support.",
+        "causes_heading": "Contribute to Our Causes",
+        "causes_intro": "Your support helps us keep children in school, provide nutritious meals, and reach vulnerable children with practical care.",
+        "stats_title": "Our Impact",
+        "stats": [
+            {
+                "number": 500,
+                "suffix": "+",
+                "label": "Children Reached"
+            },
+            {
+                "number": 120,
+                "suffix": "+",
+                "label": "Families Supported"
+            },
+            {
+                "number": 3,
+                "suffix": "",
+                "label": "Core Programs"
+            },
+            {
+                "number": 25,
+                "suffix": "+",
+                "label": "Community Partners"
+            }
+        ],
+        "trust_kicker": "Why donate us",
+        "trust_title": "We Are a Trusted Charity Foundation",
+        "trust_items": [
+            {
+                "title": "Give in the Right Place",
+                "text": "Your donation supports children and families through programs that respond to real community needs."
+            },
+            {
+                "title": "Focused Impact",
+                "text": "We concentrate support on education, nutrition, and street children care so every gift has a clear purpose."
+            },
+            {
+                "title": "Programs With Care",
+                "text": "Our team works with local partners to deliver practical help with dignity, accountability, and compassion."
+            }
+        ],
+        "testimonials_kicker": "Testimonials",
+        "testimonials_title": "Voices of hope from the Nicoville family",
+        "testimonials_intro": "Every gift becomes a real story of care, dignity, and practical support in the lives of children and families.",
+        "testimonials": [
+            {
+                "quote": "This foundation decided to partner with us in educating the new generation by providing education, school requirements, sanitary pads, food, and medical treatment as well as clothes. So it's really made a tremendous impact to educate boys and girls in our community. Nicoville Foundation, keep shining",
+                "name": "Mrs. Nassiwa Cissy",
+                "role": "The Director of J&J Nursery and Primary School",
+                "highlight": "Children stayed in school",
+                "image": ""
+            }
+        ],
+        "events_kicker": "Events & Programs",
+        "events_title": "Latest Events & Programs",
+        "events_intro": "Join the work through outreach days, community support, and volunteer-led programs.",
+        "news_kicker": "Blogs & News",
+        "news_title": "Stories, updates, and lessons from the field.",
+        "news_intro": "Stay close to the work through program updates, practical reflections, and community stories.",
+        "contact_title": "Contact Us",
+        "contact_intro": "Reach out to volunteer, partner with us, ask about upcoming events, or support one of our programs.",
+        "contact_button": "Send Message",
+        "footer_text": "Nicoville supports vulnerable families through transparent relief, education, health care, and community-led development programmes.",
+        "footer_support_links": [
+            {
+                "label": "Make a Donation",
+                "url": "\/donate"
+            },
+            {
+                "label": "Support a Project",
+                "url": "\/projects"
+            },
+            {
+                "label": "Become a Volunteer",
+                "url": "\/contact"
+            },
+            {
+                "label": "Partner With Us",
+                "url": "\/contact"
+            }
+        ],
+        "social_links": [
+            {
+                "label": "Facebook",
+                "url": "https:\/\/www.facebook.com\/"
+            },
+            {
+                "label": "Instagram",
+                "url": "https:\/\/www.instagram.com\/"
+            },
+            {
+                "label": "X",
+                "url": "https:\/\/x.com\/"
+            },
+            {
+                "label": "YouTube",
+                "url": "https:\/\/www.youtube.com\/"
+            }
+        ]
+    },
+    "about": {
+        "vision_title": "Vision",
+        "vision": [
+            "A world restored by hope, sustained through faith, and transformed by love\u2014where every broken heart is healed, every forgotten soul is remembered, and every life reflects the light of God\u2019s compassion.",
+            "Nicoville Foundation envisions communities where darkness is overcome by hope, where faith rises even in the hardest moments, and where love flows freely\u2014reaching the orphan, the hungry, the homeless, and the lost\u2014bringing healing, dignity, and new beginnings."
+        ],
+        "mission_title": "Mission",
+        "mission": [
+            "At Nicoville Foundation, our mission is to be vessels of hope, carriers of faith, and expressions of God\u2019s love in a hurting world.",
+            "We are called to reach the forgotten and the vulnerable\u2014feeding the hungry, sheltering the homeless, caring for orphans, and lifting children through education by providing scholastic materials and supporting their school journey. We stand beside street children, restoring their dignity and reminding them that their lives matter.",
+            "Through every act of service, we seek not only to meet physical needs but to touch hearts and awaken hope where there was despair, faith where there was doubt, and love where there was emptiness.",
+            "We believe that when love is lived out, healing begins\u2014and through that healing, lives, communities, and generations are transformed."
+        ],
+        "motto_title": "Motto",
+        "motto": "Spread Love, Heal The World",
+        "core_values_title": "Core Values of Nicoville Foundation",
+        "core_values_intro": "These values guide how we serve, lead, partner, and care for every life reached through Nicoville Foundation.",
+        "core_values": [
+            {
+                "title": "Love",
+                "text": "Love is the foundation of everything we do. We believe that genuine love has the power to transform lives, restore hope, and unite communities."
+            },
+            {
+                "title": "Compassion",
+                "text": "We serve with empathy, kindness, and a deep commitment to understanding and responding to the needs of vulnerable individuals and communities."
+            },
+            {
+                "title": "Faith",
+                "text": "We are guided by faith in God, trusting Him to lead our mission and inspire positive change in the lives of those we serve."
+            },
+            {
+                "title": "Hope",
+                "text": "We strive to bring hope where there is despair, believing that every person deserves an opportunity for a brighter future."
+            },
+            {
+                "title": "Integrity",
+                "text": "We uphold honesty, transparency, accountability, and ethical conduct in all our actions and decisions."
+            },
+            {
+                "title": "Service",
+                "text": "We embrace a servant-hearted approach, placing the needs of others at the center of our work and leadership."
+            },
+            {
+                "title": "Empowerment",
+                "text": "We equip individuals and communities with the knowledge, resources, and opportunities needed to achieve sustainable growth and self-reliance."
+            },
+            {
+                "title": "Unity",
+                "text": "We believe lasting change is achieved through collaboration, partnership, and working together as one family for a common purpose."
+            },
+            {
+                "title": "Excellence",
+                "text": "We pursue the highest standards in our programs, leadership, and service delivery to maximize our impact on communities."
+            },
+            {
+                "title": "Human Dignity",
+                "text": "We respect, value, and uphold the worth of every individual regardless of age, gender, background, or circumstances."
+            }
+        ],
+        "commitment_title": "Our Commitment",
+        "commitment": "At Nicoville Foundation, we are committed to living out these values every day as we fulfill our mission of transforming lives, strengthening communities, and spreading love to heal the world."
+    },
+    "donate": {
+        "title": "Your Gift Opens Doors",
+        "intro": "Choose a cause, share your donor details, and continue to the contributions page we shall connect next.",
+        "side_title": "Every contribution is directed toward practical care.",
+        "side_text": "We focus support on education, nutrition, street children care, and mentorship for vulnerable children and families."
+    },
+    "contact": {
+        "title": "We Would Love to Hear From You",
+        "intro": "Reach out to volunteer, partner with us, ask about a campaign, or share a message with the Nicoville team."
+    }
+}

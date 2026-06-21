@@ -1,0 +1,117 @@
+[
+    {
+        "slug": "pad-the-girl-project",
+        "title": "PAD THE GIRL CHILD",
+        "category": "Girls Education",
+        "status": "Ongoing",
+        "started": "2017",
+        "image": "\/uploads\/projects\/project-6a2afc26bf0d63.79106278.jpg",
+        "gallery": [
+            "\/uploads\/slides\/slide-69f548425c5674.33784962.jpg",
+            "\/uploads\/slides\/slide-69f595fc4cf447.08726991.jpg",
+            "\/uploads\/slides\/slide-69f5475f47f707.80354709.jpg"
+        ],
+        "summary": "Restoring dignity, confidence, health, and educational opportunities for vulnerable girls through sanitary pad support and menstrual health education.",
+        "stats": [
+            {
+                "number": "2,000+",
+                "label": "Girls reached"
+            },
+            {
+                "number": "2019",
+                "label": "Year started"
+            },
+            {
+                "number": "10,000+",
+                "label": "Future target"
+            }
+        ],
+        "sections": [],
+        "closing_title": "",
+        "report_file": ""
+    },
+    {
+        "slug": "hope-in-gheto",
+        "title": "HOPE IN THE GHETTO PROGRAM",
+        "category": "gheto",
+        "status": "Ongoing",
+        "started": "2018",
+        "image": "\/uploads\/projects\/project-6a2ba036e71659.75243695.jpg",
+        "gallery": [],
+        "summary": "Hope in the Ghetto is a transformative community outreach initiative implemented by Nicoville Foundation to restore hope, dignity, and purpose among vulnerable individuals living in ghetto communities.",
+        "stats": [],
+        "sections": [],
+        "closing_title": "",
+        "report_file": "\/uploads\/project-reports\/project-report-6a2afb6388ec00.35946972.docx"
+    },
+    {
+        "slug": "nutrition",
+        "title": "FOOD AND NUTRITION PROGRAM",
+        "category": "Nutritional Support",
+        "status": "Ongoing",
+        "started": "2015",
+        "image": "\/uploads\/projects\/project-6a2afbdc786d47.57894224.jpg",
+        "gallery": [],
+        "summary": "The Food and Nutrition Program is one of Nicoville Foundation\u2019s longest-standing humanitarian initiatives, established in 2016 to address hunger, malnutrition, food insecurity, and poor nutrition among vulnerable populations.",
+        "stats": [],
+        "sections": [],
+        "closing_title": "",
+        "report_file": "\/uploads\/project-reports\/project-report-6a2afbdc78f854.93463380.docx"
+    },
+    {
+        "slug": "education",
+        "title": "RESTORING HOPE THROUGH EDUCATION, CARE, AND OPPORTUNITY",
+        "category": "EDUCATION",
+        "status": "Ongoing",
+        "started": "2015",
+        "image": "\/uploads\/projects\/project-6a2ba14ba3f9c0.57045465.jpeg",
+        "gallery": [],
+        "summary": "The Education and Care Program is one of Nicoville Foundation\u2019s flagship initiatives aimed at improving access to education and providing holistic support to vulnerable children. Established in 2020, the program was founded on the belief that every child deserves an opportunity to learn, grow, and realize their full potential regardless of their social or economic background.",
+        "stats": [],
+        "sections": [],
+        "closing_title": "",
+        "report_file": ""
+    },
+    {
+        "slug": "youth-mentoship",
+        "title": "YOUTH MENTORSHIP PROGRAM",
+        "category": "MENTORSHIP",
+        "status": "Ongoing",
+        "started": "2018",
+        "image": "\/uploads\/projects\/project-6a2afda04397c3.14708602.jpeg",
+        "gallery": [],
+        "summary": "The Youth Mentorship Program is a transformative initiative of Nicoville Foundation established in 2022 to empower young people through mentorship, leadership development, life skills training, mental health awareness, and personal development support.",
+        "stats": [],
+        "sections": [],
+        "closing_title": "",
+        "report_file": ""
+    },
+    {
+        "slug": "youth-soccer-academy",
+        "title": "YOUTH SOCCER ACADEMY",
+        "category": "SOCCER ACADEMY",
+        "status": "Ongoing",
+        "started": "2019",
+        "image": "\/uploads\/projects\/project-6a2afdf078eb62.17987554.jpg",
+        "gallery": [],
+        "summary": "The Youth Soccer Academy is a flagship youth development initiative established by Nicoville Foundation in 2022 to empower vulnerable children and young people through sports, mentorship, leadership development, and life-skills training.",
+        "stats": [],
+        "sections": [],
+        "closing_title": "",
+        "report_file": ""
+    },
+    {
+        "slug": "xmas-chakala",
+        "title": "CHRISTMAS CHAKALA FEST",
+        "category": "X-MASS CHAKALA",
+        "status": "Ongoing",
+        "started": "2020",
+        "image": "\/uploads\/projects\/project-6a2b9fbe173c58.53658565.jpg",
+        "gallery": [],
+        "summary": "Christmas Chakala Fest is an annual humanitarian and faith-based outreach initiative implemented by Nicoville Foundation to bring hope, dignity, joy, and practical support to vulnerable communities during the Christmas season.",
+        "stats": [],
+        "sections": [],
+        "closing_title": "",
+        "report_file": ""
+    }
+]

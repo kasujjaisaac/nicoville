@@ -1,0 +1,18 @@
+﻿[
+    {
+        "slug": "certificate-of-incorporation",
+        "title": "Certificate of Incorporation",
+        "issuer": "The Republic of Uganda - Companies Act",
+        "registration_number": "80034478116935",
+        "issued_on": "January 20, 2023",
+        "file_path": "certificates/certificate-incorporation.png"
+    },
+    {
+        "slug": "community-based-organisation-registration",
+        "title": "Community Based Organisation Registration",
+        "issuer": "Masaka City",
+        "registration_number": "MC/WKY/1044/2026",
+        "issued_on": "April 15, 2026",
+        "file_path": "certificates/certificate-cbo-registration.png"
+    }
+]

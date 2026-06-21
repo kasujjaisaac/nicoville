@@ -11,6 +11,35 @@
 
 - The homepage Latest Events & Programs and Blogs & News sections are intentionally hidden for now in `resources/views/welcome.blade.php`. Their markup has been kept in place so the sections can be reused later with timer-based display logic.
 
+## Production Runtime Content
+
+Nicoville stores administrator-edited content outside normal source files:
+
+- Uploaded public media lives in `public/uploads`.
+- Site/page content JSON lives in `storage/app/private/*.json`.
+- SQLite data lives in `database/database.sqlite` when the production environment uses SQLite.
+
+When production images are broken even though the code is correct, the usual cause is that production has the JSON/database records but not the physical files under `public/uploads`, or production is missing the latest runtime JSON/database content.
+
+Before overwriting production runtime content, download a backup from production. Contact messages, donations, bookings, and any admin edits made directly on production may exist only there.
+
+Typical sync checklist:
+
+```bash
+# From local/dev to production, copy these runtime assets as needed:
+public/uploads/
+storage/app/private/*.json
+database/database.sqlite
+```
+
+After syncing, run this on production:
+
+```bash
+php artisan nicoville:audit-runtime-content
+```
+
+The audit command checks every `/uploads/...` path referenced by the runtime JSON files and reports any missing physical files.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

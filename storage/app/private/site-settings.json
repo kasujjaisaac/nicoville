@@ -1,0 +1,100 @@
+{
+    "phone_label": "+256709641988",
+    "phone_href": "+256709641988",
+    "email": "nicovillef@gmail.com",
+    "location_label": "Masaka, Uganda",
+    "location_url": "#contact",
+    "volunteer_label": "Become a Volunteer",
+    "volunteer_url": "#contact",
+    "registration_number": "80034478116935 - URSB",
+    "registration_status": "Active",
+    "whatsapp_url": "https:\/\/wa.me\/256709641988",
+    "social_links": [
+        {
+            "platform": "facebook",
+            "label": "Facebook",
+            "url": "https:\/\/www.facebook.com\/share\/17sNsXb1NF\/"
+        },
+        {
+            "platform": "instagram",
+            "label": "Instagram",
+            "url": "https:\/\/www.facebook.com\/share\/17sNsXb1NF\/"
+        },
+        {
+            "platform": "x",
+            "label": "X",
+            "url": "https:\/\/x.com\/"
+        },
+        {
+            "platform": "youtube",
+            "label": "YouTube",
+            "url": "https:\/\/www.youtube.com\/"
+        }
+    ],
+    "menus": [
+        {
+            "label": "Home",
+            "url": "\/",
+            "highlight": false,
+            "children": []
+        },
+        {
+            "label": "About",
+            "url": "\/about",
+            "highlight": false,
+            "children": [
+                {
+                    "label": "Who We Are",
+                    "url": "\/about"
+                },
+                {
+                    "label": "Our Team",
+                    "url": "\/our-team"
+                }
+            ]
+        },
+        {
+            "label": "Projects",
+            "url": "\/projects",
+            "highlight": false,
+            "children": []
+        },
+        {
+            "label": "Causes",
+            "url": "\/causes",
+            "highlight": false,
+            "children": []
+        },
+        {
+            "label": "Events",
+            "url": "\/events",
+            "highlight": false,
+            "children": []
+        },
+        {
+            "label": "News",
+            "url": "\/news",
+            "highlight": false,
+            "children": []
+        },
+        {
+            "label": "Certificates",
+            "url": "\/certificates",
+            "highlight": false,
+            "children": []
+        },
+        {
+            "label": "Contact",
+            "url": "\/contact",
+            "highlight": false,
+            "children": []
+        },
+        {
+            "label": "Donate",
+            "url": "\/donate",
+            "highlight": true,
+            "children": []
+        }
+    ],
+    "logo_image": "\/uploads\/logos\/logo-69f595ebb6b3f3.52537647.png"
+}
