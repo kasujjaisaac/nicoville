@@ -1,12 +1,40 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('nicoville:create-admin {email=admin@nicoville.org} {--name=Nicoville Admin} {--password=}', function (string $email): int {
+    $password = (string) ($this->option('password') ?: env('ADMIN_PASSWORD', ''));
+
+    if ($password === '') {
+        $password = (string) $this->secret('Admin password');
+    }
+
+    if ($password === '') {
+        $this->error('An admin password is required.');
+
+        return 1;
+    }
+
+    $user = User::updateOrCreate([
+        'email' => $email,
+    ], [
+        'name' => (string) $this->option('name'),
+        'password' => Hash::make($password),
+        'is_admin' => true,
+    ]);
+
+    $this->info("Admin user ready: {$user->email}");
+
+    return 0;
+})->purpose('Create or update the Nicoville admin user');
 
 Artisan::command('nicoville:audit-runtime-content', function (): int {
     $contentRoot = storage_path('app/private');
