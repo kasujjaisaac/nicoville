@@ -54,6 +54,7 @@ class PageContentRepository
                     [
                         'quote' => 'Nicoville came alongside our family with school materials and steady encouragement. My children felt seen, and that gave us strength to keep going.',
                         'name' => 'Sarah N.',
+                        'email' => '',
                         'role' => 'Parent supported through education care',
                         'highlight' => 'Children stayed in school',
                         'image' => '',
@@ -61,6 +62,7 @@ class PageContentRepository
                     [
                         'quote' => 'What moved me most was the honesty of the team. They showed where support was needed and followed through with compassion.',
                         'name' => 'Daniel K.',
+                        'email' => '',
                         'role' => 'Monthly donor',
                         'highlight' => 'Transparent giving',
                         'image' => '',
@@ -68,6 +70,7 @@ class PageContentRepository
                     [
                         'quote' => 'Serving with Nicoville taught me that small acts done consistently can restore confidence, hope, and belonging in a child.',
                         'name' => 'Faith A.',
+                        'email' => '',
                         'role' => 'Community volunteer',
                         'highlight' => 'Hope restored',
                         'image' => '',

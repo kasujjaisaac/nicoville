@@ -106,8 +106,9 @@ class AdminTestimonialsController extends Controller
     private function testimonialFromRequest(Request $request): array
     {
         $validated = $request->validate([
-            'quote' => ['required', 'string', 'max:500'],
+            'quote' => ['required', 'string'],
             'name' => ['required', 'string', 'max:80'],
+            'email' => ['required', 'email', 'max:254'],
             'role' => ['required', 'string', 'max:120'],
             'highlight' => ['required', 'string', 'max:80'],
             'image' => ['nullable', 'string', 'max:700'],
@@ -128,6 +129,7 @@ class AdminTestimonialsController extends Controller
         return [
             'quote' => $validated['quote'],
             'name' => $validated['name'],
+            'email' => $validated['email'],
             'role' => $validated['role'],
             'highlight' => $validated['highlight'],
             'image' => $image,
@@ -139,6 +141,7 @@ class AdminTestimonialsController extends Controller
         return [
             'quote' => '',
             'name' => '',
+            'email' => '',
             'role' => '',
             'highlight' => '',
             'image' => '',

@@ -259,10 +259,13 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="field"><label>Name</label><input name="pages[home][testimonials][{{ $index }}][name]" value="{{ old("pages.home.testimonials.$index.name", $item['name'] ?? '') }}"></div>
-                                        <div class="field"><label>Role</label><input name="pages[home][testimonials][{{ $index }}][role]" value="{{ old("pages.home.testimonials.$index.role", $item['role'] ?? '') }}"></div>
+                                        <div class="field"><label>Email</label><input type="email" name="pages[home][testimonials][{{ $index }}][email]" value="{{ old("pages.home.testimonials.$index.email", $item['email'] ?? '') }}"></div>
                                     </div>
                                     <div class="form-row">
+                                        <div class="field"><label>Role</label><input name="pages[home][testimonials][{{ $index }}][role]" value="{{ old("pages.home.testimonials.$index.role", $item['role'] ?? '') }}"></div>
                                         <div class="field"><label>Highlight</label><input name="pages[home][testimonials][{{ $index }}][highlight]" value="{{ old("pages.home.testimonials.$index.highlight", $item['highlight'] ?? '') }}"></div>
+                                    </div>
+                                    <div class="form-row">
                                         <div class="field"><label>Image</label><input name="pages[home][testimonials][{{ $index }}][image]" value="{{ old("pages.home.testimonials.$index.image", $item['image'] ?? '') }}"></div>
                                     </div>
                                 </div>

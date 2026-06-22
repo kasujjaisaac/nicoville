@@ -161,6 +161,9 @@
                         </div>
                         <div class="testimonial-title">
                             <strong>{{ $testimonial['name'] ?? 'Unnamed testimonial' }}</strong>
+                            @if (filled($testimonial['email'] ?? null))
+                                <span>{{ $testimonial['email'] }}</span>
+                            @endif
                             <span>{{ $testimonial['role'] ?? '' }}</span>
                             <span>{{ Str::limit($testimonial['quote'] ?? '', 130) }}</span>
                         </div>

@@ -1476,6 +1476,20 @@
             line-height: 1.35;
         }
 
+        .testimonial-identity .testimonial-email {
+            display: block;
+            margin-top: 4px;
+            color: var(--green);
+            font-size: 14px;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .testimonial-identity .testimonial-email:hover,
+        .testimonial-identity .testimonial-email:focus-visible {
+            text-decoration: underline;
+        }
+
         .testimonial-highlight {
             display: none;
         }
@@ -3774,6 +3788,9 @@
                                             <div>
                                                 <strong>{{ $testimonial['name'] }}</strong>
                                                 <span>{{ $testimonial['role'] }}</span>
+                                                @if (filled($testimonial['email'] ?? null))
+                                                    <a class="testimonial-email" href="mailto:{{ $testimonial['email'] }}">{{ $testimonial['email'] }}</a>
+                                                @endif
                                             </div>
                                         </div>
                                         <span class="testimonial-highlight">{{ $testimonial['highlight'] }}</span>

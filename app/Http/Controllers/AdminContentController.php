@@ -108,6 +108,7 @@ class AdminContentController extends Controller
                     ->map(fn (array $item): array => [
                         'quote' => $this->text($item['quote'] ?? ''),
                         'name' => $this->text($item['name'] ?? ''),
+                        'email' => $this->text($item['email'] ?? ''),
                         'role' => $this->text($item['role'] ?? ''),
                         'highlight' => $this->text($item['highlight'] ?? ''),
                         'image' => $this->text($item['image'] ?? ''),

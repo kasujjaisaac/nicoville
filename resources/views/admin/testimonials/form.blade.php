@@ -101,7 +101,7 @@
             <header class="page-head">
                 <div>
                     <h1>{{ $mode === 'create' ? 'Add Testimonial' : 'Edit Testimonial' }}</h1>
-                    <p>Enter one clear story. A short quote, a name, a role, and a small highlight are enough for the homepage slider.</p>
+                    <p>Enter the testimonial, the person's contact details, their role, and a small highlight for the homepage slider.</p>
                 </div>
                 <a class="small-button" href="/admin/testimonials">Back to Testimonials</a>
             </header>
@@ -138,6 +138,11 @@
                             <div class="field">
                                 <label for="name">Name</label>
                                 <input id="name" name="name" value="{{ old('name', $testimonial['name']) }}" required>
+                            </div>
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email" value="{{ old('email', $testimonial['email']) }}" required>
+                                <small>This email will be displayed on the homepage.</small>
                             </div>
                             <div class="field">
                                 <label for="role">Role</label>
