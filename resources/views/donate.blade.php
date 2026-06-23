@@ -103,12 +103,11 @@
                 </div>
                 <div class="form-row">
                     <label>Contact / Phone<input name="phone" type="tel" placeholder="+256..." required></label>
-                    <label>Amount<input name="amount" type="number" min="1" placeholder="Amount in UGX" required></label>
+                    <label>Amount<input name="amount" type="number" min="1" placeholder="Amount in USD" required></label>
                 </div>
                 <div class="form-row">
                     <label>Currency
                         <select name="currency" required>
-                            <option value="UGX">UGX</option>
                             <option value="USD">USD</option>
                         </select>
                     </label>

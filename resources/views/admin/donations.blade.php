@@ -39,7 +39,7 @@
                         <div>
                             <span class="status">{{ $donation->status }}</span>
                             <h2>{{ $donation->name }}</h2>
-                            <div class="amount">{{ $donation->currency }} {{ number_format($donation->amount) }}</div>
+                            <div class="amount">${{ number_format($donation->amount) }}</div>
                             <div class="meta"><span>{{ $donation->cause }}</span><span>{{ $donation->email }}</span><span>{{ $donation->phone }}</span><span>{{ str_replace('-', ' ', $donation->payment_method) }}</span><span>{{ $donation->created_at->format('M j, Y g:i A') }}</span></div>
                             @if($donation->message)<p class="message">{{ $donation->message }}</p>@endif
                         </div>

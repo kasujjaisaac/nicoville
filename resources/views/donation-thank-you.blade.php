@@ -23,7 +23,7 @@
 
                 <div class="summary-grid">
                     <div class="summary-item"><b>Project</b>{{ $donation->cause }}</div>
-                    <div class="summary-item"><b>Amount</b>{{ $donation->currency }} {{ number_format($donation->amount) }}</div>
+                    <div class="summary-item"><b>Amount</b>${{ number_format($donation->amount) }}</div>
                     <div class="summary-item"><b>Payment Method</b>{{ str_replace('-', ' ', ucfirst($donation->payment_method)) }}</div>
                     <div class="summary-item"><b>Status</b>{{ ucfirst($donation->status) }}</div>
                 </div>

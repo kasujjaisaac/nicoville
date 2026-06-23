@@ -101,8 +101,8 @@
                     </div>
                     <div class="field"><label>Short Brief</label><textarea name="brief" required>{{ old('brief', $cause['brief']) }}</textarea></div>
                     <div class="form-row">
-                        <div class="field"><label>Target Amount</label><input name="target" type="number" min="0" value="{{ old('target', $cause['target']) }}" required></div>
-                        <div class="field"><label>Raised Amount</label><input name="raised" type="number" min="0" value="{{ old('raised', $cause['raised']) }}" required></div>
+                        <div class="field"><label>Target Amount (USD)</label><input name="target" type="number" min="0" value="{{ old('target', $cause['target']) }}" required></div>
+                        <div class="field"><label>Raised Amount (USD)</label><input name="raised" type="number" min="0" value="{{ old('raised', $cause['raised']) }}" required></div>
                     </div>
                 </section>
 

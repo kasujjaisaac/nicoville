@@ -3541,24 +3541,23 @@
                             <h2 class="donation-title">Give to {{ $settings['logo_name'] }}</h2>
 
                             <div class="amount-grid">
-                                <button class="amount-button" type="button" data-ugx="63330" data-usd="17">Sh63,330</button>
-                                <button class="amount-button" type="button" data-ugx="105550" data-usd="28">Sh105,550</button>
-                                <button class="amount-button" type="button" data-ugx="189990" data-usd="50">Sh189,990</button>
-                                <button class="amount-button" type="button" data-ugx="253320" data-usd="67">Sh253,320</button>
-                                <button class="amount-button" type="button" data-ugx="633300" data-usd="167">Sh633,300</button>
-                                <button class="amount-button" type="button" data-ugx="2111000" data-usd="556">Sh2,111,000</button>
+                                <button class="amount-button" type="button" data-usd="17">$17</button>
+                                <button class="amount-button" type="button" data-usd="28">$28</button>
+                                <button class="amount-button" type="button" data-usd="50">$50</button>
+                                <button class="amount-button" type="button" data-usd="67">$67</button>
+                                <button class="amount-button" type="button" data-usd="167">$167</button>
+                                <button class="amount-button" type="button" data-usd="556">$556</button>
                             </div>
 
                             <label class="custom-amount">
-                                <span class="currency-prefix" data-currency-prefix>Sh&nbsp;</span>
-                                <input name="amount" inputmode="numeric" placeholder="975" aria-label="Custom donation amount">
+                                <span class="currency-prefix" data-currency-prefix>$&nbsp;</span>
+                                <input name="amount" inputmode="numeric" placeholder="25" aria-label="Custom donation amount">
                             </label>
 
                             <label class="currency-select-wrap">
                                 Donating in
                                 <select class="currency-select" name="currency" data-currency-select>
-                                    <option value="UGX" selected>Ugandan Shillings (UGX)</option>
-                                    <option value="USD">US Dollars (USD)</option>
+                                    <option value="USD" selected>US Dollars (USD)</option>
                                 </select>
                             </label>
 
@@ -4065,7 +4064,7 @@
             donationForms.forEach((form) => {
                 const frequencyButtons = Array.from(form.querySelectorAll('[data-frequency]'));
                 const frequencyInput = form.querySelector('[data-frequency-input]');
-                const amountButtons = Array.from(form.querySelectorAll('[data-ugx][data-usd]'));
+                const amountButtons = Array.from(form.querySelectorAll('[data-usd]'));
                 const amountInput = form.querySelector('input[name="amount"]');
                 const currencySelect = form.querySelector('[data-currency-select]');
                 const currencyPrefix = form.querySelector('[data-currency-prefix]');
@@ -4073,18 +4072,18 @@
                 const paymentInput = form.querySelector('[data-payment-input]');
 
                 function currentCurrency() {
-                    return currencySelect?.value || 'UGX';
+                    return currencySelect?.value || 'USD';
                 }
 
                 function syncAmounts() {
                     const currency = currentCurrency();
 
                     if (currencyPrefix) {
-                        currencyPrefix.innerHTML = currency === 'USD' ? '$&nbsp;' : 'Sh&nbsp;';
+                        currencyPrefix.innerHTML = '$&nbsp;';
                     }
 
                     amountButtons.forEach((button) => {
-                        const amount = currency === 'USD' ? button.dataset.usd : button.dataset.ugx;
+                        const amount = button.dataset.usd;
                         button.textContent = formatDonationAmount(amount, currency);
                     });
                 }
@@ -4108,7 +4107,7 @@
                         amountButtons.forEach((option) => option.classList.toggle('is-selected', option === button));
 
                         if (amountInput) {
-                            amountInput.value = currentCurrency() === 'USD' ? button.dataset.usd : button.dataset.ugx;
+                            amountInput.value = button.dataset.usd;
                             amountInput.focus();
                         }
                     });
@@ -4124,7 +4123,7 @@
 
                     if (amountInput) {
                         amountInput.value = '';
-                        amountInput.placeholder = currentCurrency() === 'USD' ? '25' : '97500';
+                        amountInput.placeholder = '25';
                     }
                 });
 

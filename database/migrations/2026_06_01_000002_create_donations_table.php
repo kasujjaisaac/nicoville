@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->unsignedBigInteger('amount');
-            $table->string('currency')->default('UGX');
+            $table->string('currency')->default('USD');
             $table->string('payment_method')->default('pending');
             $table->text('message')->nullable();
             $table->string('status')->default('pending');

@@ -40,7 +40,7 @@ class CausesRepository
 
     public function formatMoney(int|float $amount): string
     {
-        return 'Sh'.number_format(max(0, (int) $amount));
+        return '$'.number_format(max(0, (int) $amount));
     }
 
     public function progress(array $cause): int
@@ -61,8 +61,8 @@ class CausesRepository
                 'title' => 'Education Support for Vulnerable Children',
                 'image' => '/uploads/slides/slide-69f548425c5674.33784962.jpg',
                 'brief' => 'Helping vulnerable learners stay in school with scholastic materials, fees support, uniforms, and mentorship.',
-                'target' => 8000000,
-                'raised' => 4850000,
+                'target' => 2105,
+                'raised' => 1276,
                 'details' => [
                     'This campaign supports children whose families are struggling to keep them in school. We provide books, pens, uniforms, sanitary pads, school fees support, and mentorship so each child has a fair chance to learn.',
                     'Education is one of the strongest paths out of vulnerability. Your contribution helps remove practical barriers that keep children away from class and restores confidence to families who feel overwhelmed.',
@@ -79,8 +79,8 @@ class CausesRepository
                 'title' => 'Food and Nutrition Support',
                 'image' => '/uploads/slides/slide-69f5475f47f707.80354709.jpg',
                 'brief' => 'Providing nutritious food packs and wellness support for children and families facing difficult seasons.',
-                'target' => 6500000,
-                'raised' => 3120000,
+                'target' => 1710,
+                'raised' => 821,
                 'details' => [
                     'This campaign provides food and nutrition support to vulnerable children and families. We focus on practical food packs, child wellness checks, and family support that helps households move through difficult moments with dignity.',
                     'A well-fed child can focus, play, learn, and grow. Each gift helps us reach homes where nutrition support can make an immediate difference.',

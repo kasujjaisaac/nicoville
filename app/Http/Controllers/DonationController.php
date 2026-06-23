@@ -18,14 +18,14 @@ class DonationController extends Controller
             'email' => ['required', 'email', 'max:180'],
             'phone' => ['required', 'string', 'max:80'],
             'amount' => ['required', 'integer', 'min:1'],
-            'currency' => ['nullable', 'string', 'in:UGX,USD'],
+            'currency' => ['nullable', 'string', 'in:USD'],
             'payment_method' => ['nullable', 'string', 'max:80'],
             'message' => ['nullable', 'string', 'max:1200'],
         ]);
 
         $donation = Donation::create([
             ...$validated,
-            'currency' => $validated['currency'] ?? 'UGX',
+            'currency' => 'USD',
             'payment_method' => $validated['payment_method'] ?? 'pending',
             'status' => 'pending',
         ]);
